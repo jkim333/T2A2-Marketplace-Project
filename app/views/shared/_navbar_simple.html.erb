@@ -1,7 +1,7 @@
-<nav class="flex justify-center bg-white">
+<nav class="flex justify-center bg-white shadow-md">
     <div class="container">
         <div class="flex justify-between items-center">
-            <div class="p-4">YWaste</div>
+            <%= link_to "Chango", root_path, class: "my-2 font-medium bg-green-500 px-3 py-2 text-white", style: "border-radius: 50%;" %>
             <% if user_signed_in? %>
                 <div class="p-3">
                     <button class="w-8 h-8 text-xl"><i class="far fa-user-circle"></i></button>

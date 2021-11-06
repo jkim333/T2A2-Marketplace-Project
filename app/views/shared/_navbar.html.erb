@@ -1,25 +1,28 @@
-<nav class="flex justify-center bg-white">
+<nav class="flex justify-center bg-white shadow-md">
     <div class="flex flex-col md:flex-row md:justify-between container">
         <div class="flex flex-col md:flex-row md:justify-between">
             <div class="flex justify-between items-center">
-                <div class="p-4">YWaste</div>
-                <button class="w-8 h-8 md:hidden text-xl" id="navbar__btn"><i class="fas fa-bars"></i></button>
+                <%= link_to "Chango", root_path, class: "my-2 font-medium bg-green-500 px-3 py-2 text-white", style: "border-radius: 50%;" %>
+                <button class="w-8 h-8 md:hidden text-xl hover:text-green-500 transition ease-in-out duration-150" id="navbar__btn"><i class="fas fa-bars"></i></button>
             </div>
-            <ul class="hidden md:flex flex-col md:flex-row" id="navbar__menu1">
-                <li class="p-4"><%= link_to "Furniture", "#" %><li>
-                <li class="p-4"><%= link_to "Clothes", "#" %></li>
-                <li class="p-4"><%= link_to "Cars", "#" %></li>
-                <li class="p-4"><%= link_to "More...", "#" %></li>
+            <ul class="hidden md:flex flex-col md:flex-row text-gray-700 text-sm font-medium md:ml-5" id="navbar__menu1">
+                <li class="hover:bg-green-100 transition ease-in-out duration-150"><%= link_to "Furniture", "#", class: "block p-5 leading-4", style: "height: 56px;" %><li>
+                <li class="hover:bg-green-100 transition ease-in-out duration-150"><%= link_to "Clothes", "#", class: "block p-5 leading-4", style: "height: 56px;" %><li>
+                <li class="hover:bg-green-100 transition ease-in-out duration-150"><%= link_to "Cars", "#", class: "block p-5 leading-4", style: "height: 56px;" %><li>
+                <li class="hover:bg-green-100 transition ease-in-out duration-150"><%= link_to "More...", "#", class: "block p-5 leading-4", style: "height: 56px;" %><li>
             </ul>
         </div>
         <ul class="hidden md:flex justify-center" id="navbar__menu2">
             <% if user_signed_in? %>
-                <div class="p-3">
-                    <button class="w-8 h-8 text-xl"><i class="far fa-user-circle"></i></button>
+                <div class="flex items-center px-1" style="height: 56px;">
+                    <button class="text-2xl p-1 text-gray-700 hover:text-green-500 transition ease-in-out duration-150"><i class="fas fa-shopping-cart"></i></button>
+                </div>
+                <div class="flex items-center px-1" style="height: 56px;">
+                    <button class="text-2xl p-1 text-gray-700 hover:text-green-500 transition ease-in-out duration-150"><i class="far fa-user-circle"></i></button>
                 </div>
             <% else %>
-                <li class="p-4"><%= link_to "Sign in", new_user_session_path %></li>
-                <li class="p-4"><%= link_to "Register", new_user_registration_path %></li>
+                <li class="text-gray-700 text-sm font-medium hover:bg-green-100 transition ease-in-out duration-150"><%= link_to "Sign in", new_user_session_path, class: "block p-5 leading-4", style: "height: 56px;" %></li>
+                <li class="text-gray-700 text-sm font-medium hover:bg-green-100 transition ease-in-out duration-150"><%= link_to "Register", new_user_registration_path, class: "block p-5 leading-4", style: "height: 56px;" %></li>
             <% end %>
         </ul>
     </div>
