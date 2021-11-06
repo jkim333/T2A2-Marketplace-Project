@@ -15,7 +15,7 @@
         <ul class="hidden md:flex justify-center" id="navbar__menu2">
             <% if user_signed_in? %>
                 <div class="p-3">
-                    <button class="w-8 h-8 text-xl" id="navbar__btn"><i class="far fa-user-circle"></i></button>
+                    <button class="w-8 h-8 text-xl"><i class="far fa-user-circle"></i></button>
                 </div>
             <% else %>
                 <li class="p-4"><%= link_to "Sign in", new_user_session_path %></li>

@@ -1,0 +1,12 @@
+<nav class="flex justify-center bg-white">
+    <div class="container">
+        <div class="flex justify-between items-center">
+            <div class="p-4">YWaste</div>
+            <% if user_signed_in? %>
+                <div class="p-3">
+                    <button class="w-8 h-8 text-xl"><i class="far fa-user-circle"></i></button>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</nav>
