@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :transactions
+
   validates :username, presence: { message: "can't be blank" },
             uniqueness: true, length: { maximum: 20 },
             format: { with: /\A[\S]+\z/,
