@@ -22,3 +22,22 @@ navbarBtn.addEventListener("click", (e) => {
     navbarMenu2.classList.add("hidden");
   }
 });
+
+userBtn = document.getElementById("user__btn");
+userDropdown = document.getElementById("user__dropdown");
+if (userBtn) {
+  userBtn.addEventListener("click", (e) => {
+    userDropdown.classList.toggle("hidden");
+  });
+  window.onclick = function (e) {
+    if (e.target.closest("#user__dropdown") || e.target.closest("#user__btn")) {
+    } else {
+      userDropdown.classList.add("hidden");
+    }
+  };
+  userDropdown.querySelectorAll("a").forEach((element) => {
+    element.addEventListener("click", () => {
+      userDropdown.classList.toggle("hidden");
+    });
+  });
+}

@@ -1,28 +1,83 @@
-<nav class="flex justify-center bg-white shadow-md">
+<nav class="flex justify-center bg-green-500 shadow-md px-2">
     <div class="flex flex-col md:flex-row md:justify-between container">
         <div class="flex flex-col md:flex-row md:justify-between">
             <div class="flex justify-between items-center">
-                <%= link_to "Chango", root_path, class: "my-2 font-medium bg-green-500 px-3 py-2 text-white", style: "border-radius: 50%;" %>
-                <button class="w-8 h-8 md:hidden text-xl hover:text-green-500 transition ease-in-out duration-150" id="navbar__btn"><i class="fas fa-bars"></i></button>
+                <%= link_to "Chango", root_path, class: "my-2 font-medium bg-white px-3 py-2 text-green-500", style: "border-radius: 50%;" %>
+                <button class="w-8 h-8 md:hidden text-xl text-white hover:text-gray-700 hover:bg-green-100 transition ease-in-out duration-150 rounded-md" id="navbar__btn"><i class="fas fa-bars"></i></button>
             </div>
-            <ul class="hidden md:flex flex-col md:flex-row text-gray-700 text-sm font-medium md:ml-5" id="navbar__menu1">
-                <li class="hover:bg-green-100 transition ease-in-out duration-150"><%= link_to "Furniture", "#", class: "block p-5 leading-4", style: "height: 56px;" %><li>
-                <li class="hover:bg-green-100 transition ease-in-out duration-150"><%= link_to "Clothes", "#", class: "block p-5 leading-4", style: "height: 56px;" %><li>
-                <li class="hover:bg-green-100 transition ease-in-out duration-150"><%= link_to "Cars", "#", class: "block p-5 leading-4", style: "height: 56px;" %><li>
-                <li class="hover:bg-green-100 transition ease-in-out duration-150"><%= link_to "More...", "#", class: "block p-5 leading-4", style: "height: 56px;" %><li>
+            <ul class="hidden md:flex flex-col md:flex-row text-white text-sm font-medium md:ml-5" id="navbar__menu1">
+                <li class="hover:bg-green-100 hover:text-gray-700 transition ease-in-out duration-150 rounded-md md:rounded-none"><%= link_to "Furniture", "#", class: "block p-5 leading-4", style: "height: 56px;" %><li>
+                <li class="hover:bg-green-100 hover:text-gray-700 transition ease-in-out duration-150 rounded-md md:rounded-none"><%= link_to "Clothes", "#", class: "block p-5 leading-4", style: "height: 56px;" %><li>
+                <li class="hover:bg-green-100 hover:text-gray-700 transition ease-in-out duration-150 rounded-md md:rounded-none"><%= link_to "Cars", "#", class: "block p-5 leading-4", style: "height: 56px;" %><li>
+                <li class="hover:bg-green-100 hover:text-gray-700 transition ease-in-out duration-150 rounded-md md:rounded-none"><%= link_to "More...", "#", class: "block p-5 leading-4", style: "height: 56px;" %><li>
             </ul>
         </div>
         <ul class="hidden md:flex justify-center" id="navbar__menu2">
             <% if user_signed_in? %>
                 <div class="flex items-center px-1" style="height: 56px;">
-                    <button class="text-2xl p-1 text-gray-700 hover:text-green-500 transition ease-in-out duration-150"><i class="fas fa-shopping-cart"></i></button>
+                    <button class="text-2xl py-1 px-1.5 hover:bg-green-100 text-gray-700 transition ease-in-out duration-150 rounded-md"><i class="fas fa-shopping-cart"></i></button>
                 </div>
-                <div class="flex items-center px-1" style="height: 56px;">
-                    <button class="text-2xl p-1 text-gray-700 hover:text-green-500 transition ease-in-out duration-150"><i class="far fa-user-circle"></i></button>
+                <div class="flex items-center px-1 relative" style="height: 56px;">
+                    <button class="text-2xl py-1 px-1.5 hover:bg-green-100 text-gray-700 transition ease-in-out duration-150 rounded-md" id="user__btn"><i class="far fa-user-circle"></i><i class="fas fa-caret-down text-base align-middle ml-0.5"></i></button>
+                    <ul class="hidden absolute top-12 right-0 bg-white rounded text-gray-700 p-2 text-left shadow-lg min-w-max cursor-default text-sm z-50" id="user__dropdown">
+                        <%# Tooltip start %>
+                        <svg
+                            class="absolute text-white h-2 right-0 mr-3 bottom-full"
+                            x="0px"
+                            y="0px"
+                            viewBox="0 0 1500 1000"
+                            xmlSpace="preserve"
+                        >
+                                <polygon
+                                    class="fill-current"
+                                    points="750,0 1500,1000, 0,1000"
+                                />
+                        </svg>
+                        <%# Tooltip end %>
+                        <li>
+                            <div href="#" class="p-2 block text-sm font-semibold">
+                                Logged in as <%= current_user.username %>
+                            </div>
+                        </li>
+                        <hr/>
+                        <li class="hover:bg-gray-100 rounded transition-colors duration-150">
+                            <%= link_to "#", class: "p-2 flex items-center cursor-pointer w-full" do %>
+                                <span class="mr-2 text-green-500">
+                                    <i class="fas fa-shopping-bag"></i>
+                                </span>
+                                Purchase history
+                            <% end %>
+                        </li>
+                        <li class="hover:bg-gray-100 rounded transition-colors duration-150">
+                            <%= link_to "#", class: "p-2 flex items-center cursor-pointer w-full" do %>
+                                <span class="mr-2 text-green-500">
+                                    <i class="fas fa-store"></i>
+                                </span>
+                                Sale history
+                            <% end %>
+                        </li>
+                        <li class="hover:bg-gray-100 rounded transition-colors duration-150">
+                            <%= link_to "#", class: "p-2 flex items-center cursor-pointer w-full" do %>
+                                <span class="mr-2 text-green-500">
+                                    <i class="fas fa-wallet"></i>
+                                </span>
+                                My balance
+                            <% end %>
+                        </li>
+                        <hr/>
+                        <li class="hover:bg-gray-100 rounded transition-colors duration-150">
+                            <%= link_to destroy_user_session_path, method: :delete, class: "p-2 flex items-center cursor-pointer w-full" do %>
+                                <span class="mr-2 text-green-500">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                </span>
+                                Logout
+                            <% end %>
+                        </li>
+                    </ul>
                 </div>
             <% else %>
-                <li class="text-gray-700 text-sm font-medium hover:bg-green-100 transition ease-in-out duration-150"><%= link_to "Sign in", new_user_session_path, class: "block p-5 leading-4", style: "height: 56px;" %></li>
-                <li class="text-gray-700 text-sm font-medium hover:bg-green-100 transition ease-in-out duration-150"><%= link_to "Register", new_user_registration_path, class: "block p-5 leading-4", style: "height: 56px;" %></li>
+                <li class="text-white hover:text-gray-700 text-sm font-medium hover:bg-green-100 transition ease-in-out duration-150 rounded-md md:rounded-none"><%= link_to "Sign in", new_user_session_path, class: "block p-5 leading-4", style: "height: 56px;" %></li>
+                <li class="text-white hover:text-gray-700 text-sm font-medium hover:bg-green-100 transition ease-in-out duration-150 rounded-md md:rounded-none"><%= link_to "Register", new_user_registration_path, class: "block p-5 leading-4", style: "height: 56px;" %></li>
             <% end %>
         </ul>
     </div>
