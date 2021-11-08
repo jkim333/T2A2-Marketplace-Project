@@ -1,0 +1,63 @@
+<aside class="md:col-span-2 col-span-full">
+    <ul class="">
+        <% if yield(:title) == "Purchase history" %>
+            <li class="bg-white rounded-sm transition-colors duration-150 border-r-4 border-green-500">
+                <%= link_to profile_purchase_path, class: "p-2 flex items-center cursor-pointer w-full" do %>
+                    <span class="mr-2 text-green-500">
+                        <i class="fas fa-shopping-bag"></i>
+                    </span>
+                    Purchase history
+                <% end %>
+            </li>
+        <% else %>
+            <li class="rounded-sm transition-colors duration-150">
+                <%= link_to profile_purchase_path, class: "p-2 flex items-center cursor-pointer w-full" do %>
+                    <span class="mr-2 text-green-500">
+                        <i class="fas fa-shopping-bag"></i>
+                    </span>
+                    Purchase history
+                <% end %>
+            </li>
+        <% end %>
+
+        <% if yield(:title) == "Sale history" %>
+            <li class="bg-white rounded-sm transition-colors duration-150 border-r-4 border-green-500">
+                <%= link_to profile_sale_path, class: "p-2 flex items-center cursor-pointer w-full" do %>
+                    <span class="mr-2 text-green-500">
+                        <i class="fas fa-store"></i>
+                    </span>
+                    Sale history
+                <% end %>
+            </li>
+        <% else %>
+            <li class="rounded-sm transition-colors duration-150">
+                <%= link_to profile_sale_path, class: "p-2 flex items-center cursor-pointer w-full" do %>
+                    <span class="mr-2 text-green-500">
+                        <i class="fas fa-store"></i>
+                    </span>
+                    Sale history
+                <% end %>
+            </li>
+        <% end %>
+
+        <% if yield(:title) == "My balance" %>
+            <li class="bg-white rounded-sm transition-colors duration-150 border-r-4 border-green-500">
+                <%= link_to profile_balance_path, class: "p-2 flex items-center cursor-pointer w-full" do %>
+                    <span class="mr-2 text-green-500">
+                        <i class="fas fa-wallet"></i>
+                    </span>
+                    My balance
+                <% end %>
+            </li>
+        <% else %>
+            <li class="rounded-sm transition-colors duration-150">
+                <%= link_to profile_balance_path, class: "p-2 flex items-center cursor-pointer w-full" do %>
+                    <span class="mr-2 text-green-500">
+                        <i class="fas fa-wallet"></i>
+                    </span>
+                    My balance
+                <% end %>
+            </li>
+        <% end %>
+    </ul>
+</aside>
