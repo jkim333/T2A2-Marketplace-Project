@@ -2,26 +2,87 @@
 <%= render "shared/hero" %>
 
 <div class="px-4 bg-gray-50">
-    <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 py-8">
-        <% for i in 0..7 do %>
-            <article class="bg-white rounded-sm p-2 shadow text-gray-900">
-                <div class="bg-gray-100 mb-2 flex justify-center h-32 sm:h-40 relative">
-                    <img src="https://via.placeholder.com/150">
-                    <div class="hidden sm:block bg-black bg-opacity-60 px-3.5 py-2 text-white absolute top-2/3 -left-2 font-medium">
-                        <span class="text-green-500">$</span>
-                        4,300
-                    </div>
-                </div>
+    <div class="max-w-6xl mx-auto py-8">
+        <div class="grid grid-cols-7 gap-8">
+            <aside class="md:col-span-2 col-span-full text-gray-900">
                 <div>
-                    <p class="text-sm"><%= "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce risus sem, sollicitudin non purus sit amet, dapibus feugiat lorem. Nulla lobortis imperdiet nunc, vitae lobortis mi dignissim a.".truncate(40) %></p>
-                    <p class="sm:hidden text-sm font-medium text-green-500">$ 4,300</p>
+                    <ul>
+                        <li class="px-1 py-2 block font-bold">Categories</li>
+                        <li>
+                            <%= link_to products_path, class: "transition-colors duration-150 px-2 py-2 block rounded-sm hover:bg-gray-300 bg-gray-300" do %>
+                                All (10)
+                            <% end %>
+                        </li>
+                        <li>
+                            <%= link_to products_path, class: "transition-colors duration-150 px-2 py-2 block rounded-sm hover:bg-gray-300" do %>
+                                Furnitures (3)
+                            <% end %>
+                        </li>
+                        <li>
+                            <%= link_to products_path, class: "transition-colors duration-150 px-2 py-2 block rounded-sm hover:bg-gray-300" do %>
+                                Clothes (3)
+                            <% end %>
+                        </li>
+                        <li>
+                            <%= link_to products_path, class: "transition-colors duration-150 px-2 py-2 block rounded-sm hover:bg-gray-300" do %>
+                                Exercise (3)
+                            <% end %>
+                        </li>
+                    </ul>
+                    <hr class="my-1" />
+                    <ul>
+                        <li class="px-1 py-2 block font-bold">Price</li>
+                        <li>
+                            <%= form_with url: "/products", method: :get, class: "flex flex-col" do |form| %>
+                                <div class="grid grid-cols-2 gap-2 mb-2">
+                                    <%= form.number_field :min_price, class: "border border-gray-300 shadow-sm focus:outline-none focus:border-green-500 text-sm p-2", autocomplete: "off", placeholder: "Min ($)" %>
+                                    <%= form.number_field :max_price, class: "border border-gray-300 shadow-sm focus:outline-none focus:border-green-500 text-sm p-2", autocomplete: "off", placeholder: "Max ($)" %>
+                                </div>
+                                <%= form.submit "Search", class: "p-2 border-2 border-green-500 font-medium rounded-sm text-green-500 bg-transparent hover:bg-green-500 hover:text-white focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-pointer" %>
+                            <% end %>
+                        </li>
+                    </ul>
                 </div>
-            </article>
-        <% end %>
-    </div>
-    <div class="flex justify-center items-center pb-16">
-        <%= link_to "See all", "#", class: "py-3 px-12 border-2 border-green-500 font-medium rounded-sm text-gray-900 bg-transparent hover:bg-green-500 hover:text-white focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-pointer" %>
+            </aside>
+            <div class="md:col-span-5 col-span-full">
+                <div class="grid gap-4">
+                    <article class="flex flex-col sm:flex-row bg-white rounded-md p-4 shadow text-gray-900">
+                        <img src="https://via.placeholder.com/150" class="w-36 h-36">
+                        <div class="flex flex-col justify-between sm:ml-4">
+                            <div class="py-4 sm:py-0">
+                                <div class="flex justify-between">
+                                    <p class="font-medium">Title</p>
+                                    <p class="font-medium">$9.99</p>
+                                </div>
+                                <p class="text-sm"><%= "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce risus sem, sollicitudin non purus sit amet, dapibus feugiat lorem. Nulla lobortis imperdiet nunc, vitae lobortis mi dignissim a.".truncate(150) %></p>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div></div>
+                                <p class="italic text-sm">09/11/2021</p>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="flex flex-col sm:flex-row bg-white rounded-md p-4 shadow text-gray-900">
+                        <img src="https://via.placeholder.com/150" class="w-36 h-36">
+                        <div class="flex flex-col justify-between sm:ml-4">
+                            <div class="py-4 sm:py-0">
+                                <div class="flex justify-between">
+                                    <p class="font-medium">Title</p>
+                                    <p class="font-medium">$9.99</p>
+                                </div>
+                                <p class="text-sm"><%= "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce risus sem, sollicitudin non purus sit amet, dapibus feugiat lorem. Nulla lobortis imperdiet nunc, vitae lobortis mi dignissim a.".truncate(150) %></p>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div></div>
+                                <p class="italic text-sm">09/11/2021</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
 <%= javascript_pack_tag 'navbar' %>
+<%= javascript_pack_tag 'products' %>
