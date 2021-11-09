@@ -1,24 +1,24 @@
-<nav class="flex justify-center bg-green-500 shadow-md px-2">
+<nav class="flex justify-center bg-gray-200 shadow-md px-2 border-b border-gray-300 bg-opacity-90">
     <div class="flex flex-col md:flex-row md:justify-between container">
         <div class="flex flex-col md:flex-row md:justify-between">
             <div class="flex justify-between items-center">
-                <%= link_to "Chango", root_path, class: "my-2 font-medium bg-white px-3 py-2 text-green-500", style: "border-radius: 50%;" %>
-                <button class="w-8 h-8 md:hidden text-xl text-white hover:text-gray-700 hover:bg-green-100 transition ease-in-out duration-150 rounded-md" id="navbar__btn"><i class="fas fa-bars"></i></button>
+                <%= link_to "Chango", root_path, class: "my-2 font-medium text-white px-3 py-2 bg-green-500", style: "border-radius: 50%;" %>
+                <button class="w-8 h-8 md:hidden text-xl text-gray-700 hover:bg-white transition ease-in-out duration-150 rounded-md" id="navbar__btn"><i class="fas fa-bars"></i></button>
             </div>
-            <ul class="hidden md:flex flex-col md:flex-row text-white text-sm font-medium md:ml-5" id="navbar__menu1">
-                <li class="hover:bg-green-100 hover:text-gray-700 transition ease-in-out duration-150 rounded-md md:rounded-none"><%= link_to "Furniture", "#", class: "block p-5 leading-4", style: "height: 56px;" %><li>
-                <li class="hover:bg-green-100 hover:text-gray-700 transition ease-in-out duration-150 rounded-md md:rounded-none"><%= link_to "Clothes", "#", class: "block p-5 leading-4", style: "height: 56px;" %><li>
-                <li class="hover:bg-green-100 hover:text-gray-700 transition ease-in-out duration-150 rounded-md md:rounded-none"><%= link_to "Cars", "#", class: "block p-5 leading-4", style: "height: 56px;" %><li>
-                <li class="hover:bg-green-100 hover:text-gray-700 transition ease-in-out duration-150 rounded-md md:rounded-none"><%= link_to "More...", "#", class: "block p-5 leading-4", style: "height: 56px;" %><li>
+            <ul class="hidden md:flex flex-col md:flex-row text-sm font-medium md:ml-5" id="navbar__menu1">
+                <li class="hover:bg-white text-gray-700 transition ease-in-out duration-150 rounded-md md:rounded-none"><%= link_to "Furniture", "#", class: "block p-5 leading-4", style: "height: 56px;" %><li>
+                <li class="hover:bg-white hover:text-gray-700 transition ease-in-out duration-150 rounded-md md:rounded-none"><%= link_to "Clothes", "#", class: "block p-5 leading-4", style: "height: 56px;" %><li>
+                <li class="hover:bg-white hover:text-gray-700 transition ease-in-out duration-150 rounded-md md:rounded-none"><%= link_to "Cars", "#", class: "block p-5 leading-4", style: "height: 56px;" %><li>
+                <li class="hover:bg-white hover:text-gray-700 transition ease-in-out duration-150 rounded-md md:rounded-none"><%= link_to "More...", "#", class: "block p-5 leading-4", style: "height: 56px;" %><li>
             </ul>
         </div>
         <ul class="hidden md:flex justify-center" id="navbar__menu2">
             <% if user_signed_in? %>
                 <div class="flex items-center px-1" style="height: 56px;">
-                    <button class="text-2xl py-1 px-1.5 hover:bg-green-100 text-gray-700 transition ease-in-out duration-150 rounded-md"><i class="fas fa-shopping-cart"></i></button>
+                    <button class="text-2xl py-1 px-1.5 hover:bg-white text-gray-700 transition ease-in-out duration-150 rounded-md"><i class="fas fa-shopping-cart"></i></button>
                 </div>
                 <div class="flex items-center px-1 relative" style="height: 56px;">
-                    <button class="text-2xl py-1 px-1.5 hover:bg-green-100 text-gray-700 transition ease-in-out duration-150 rounded-md" id="user__btn"><i class="far fa-user-circle"></i><i class="fas fa-caret-down text-base align-middle ml-0.5"></i></button>
+                    <button class="text-2xl py-1 px-1.5 hover:bg-white text-gray-700 transition ease-in-out duration-150 rounded-md" id="user__btn"><i class="far fa-user-circle"></i><i class="fas fa-caret-down text-base align-middle ml-0.5"></i></button>
                     <ul class="hidden absolute top-12 right-0 bg-white rounded text-gray-700 p-2 text-left shadow-lg min-w-max cursor-default text-sm z-50" id="user__dropdown">
                         <%# Tooltip start %>
                         <svg
@@ -76,8 +76,8 @@
                     </ul>
                 </div>
             <% else %>
-                <li class="text-white hover:text-gray-700 text-sm font-medium hover:bg-green-100 transition ease-in-out duration-150 rounded-md md:rounded-none"><%= link_to "Sign in", new_user_session_path, class: "block p-5 leading-4", style: "height: 56px;" %></li>
-                <li class="text-white hover:text-gray-700 text-sm font-medium hover:bg-green-100 transition ease-in-out duration-150 rounded-md md:rounded-none"><%= link_to "Register", new_user_registration_path, class: "block p-5 leading-4", style: "height: 56px;" %></li>
+                <li class="text-gray-700 text-sm font-medium hover:bg-white transition ease-in-out duration-150 rounded-md md:rounded-none"><%= link_to "Sign in", new_user_session_path, class: "block p-5 leading-4", style: "height: 56px;" %></li>
+                <li class="text-gray-700 text-sm font-medium hover:bg-white transition ease-in-out duration-150 rounded-md md:rounded-none"><%= link_to "Register", new_user_registration_path, class: "block p-5 leading-4", style: "height: 56px;" %></li>
             <% end %>
         </ul>
     </div>
