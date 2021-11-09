@@ -1,6 +1,53 @@
 <% provide(:title, "Purchase history") %>
 
 <%= render "shared/navbar" %>
-<h1>purchase</h1>
+<div class="bg-gray-100 py-12 px-6 xl:px-28 grid grid-cols-7 gap-8">
+    <%= render "profiles/shared/side_navbar" %>
+    <div class="md:col-span-5 col-span-full">
+        <h1 class="text-3xl font-extrabold text-gray-900 text-center mb-8">Purchase history</h1>
+        <div class="grid gap-4">
+            <article class="flex flex-col sm:flex-row bg-white rounded-md p-4 shadow text-gray-900">
+                <img src="https://via.placeholder.com/150" class="w-36 h-36">
+                <div class="flex flex-col justify-between sm:ml-4">
+                    <div class="py-4 sm:py-0">
+                        <div class="flex justify-between">
+                            <p class="font-medium">Title</p>
+                            <p class="font-medium">$9.99</p>
+                        </div>
+                        <p class="text-sm"><%= "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce risus sem, sollicitudin non purus sit amet, dapibus feugiat lorem. Nulla lobortis imperdiet nunc, vitae lobortis mi dignissim a.".truncate(150) %></p>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <%= link_to "#", class: "bg-blue-400 hover:bg-blue-500 text-white border py-1 px-2 rounded font-medium transition duration-150 ease-in-out" do %>
+                                View
+                            <% end %>
+                        </div>
+                        <p class="italic text-sm">09/11/2021</p>
+                    </div>
+                </div>
+            </article>
+            <article class="flex flex-col sm:flex-row bg-white rounded-md p-4 shadow text-gray-900">
+                <img src="https://via.placeholder.com/150" class="w-36 h-36">
+                <div class="flex flex-col justify-between sm:ml-4">
+                    <div class="py-4 sm:py-0">
+                        <div class="flex justify-between">
+                            <p class="font-medium">Title</p>
+                            <p class="font-medium">$9.99</p>
+                        </div>
+                        <p class="text-sm"><%= "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce risus sem, sollicitudin non purus sit amet, dapibus feugiat lorem. Nulla lobortis imperdiet nunc, vitae lobortis mi dignissim a.".truncate(150) %></p>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <%= link_to "#", class: "bg-blue-400 hover:bg-blue-500 text-white border py-1 px-2 rounded font-medium transition duration-150 ease-in-out" do %>
+                                View
+                            <% end %>
+                        </div>
+                        <p class="italic text-sm">09/11/2021</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
 
 <%= javascript_pack_tag 'navbar' %>
