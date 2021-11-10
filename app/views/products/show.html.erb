@@ -1,2 +1,85 @@
-show
-<%= @product.title %>
+<%= render "shared/navbar" %>
+<%= render "shared/hero" %>
+
+<div class="px-4 bg-gray-50">
+    <div class="max-w-6xl mx-auto py-8">
+        <p class="mb-4 text-sm"><%= link_to "Home", "#", class: "hover:underline" %><i class="fas fa-chevron-right text-xs mx-2 text-gray-400"></i><%= link_to "Category", "#", class: "hover:underline" %><i class="fas fa-chevron-right text-xs mx-2 text-gray-400"></i><%= link_to "Product", "#", class: "hover:underline" %></p>
+        <div class="grid gap-4">
+            <div class="grid grid-cols-8 gap-4 md:items-start">
+                <div class="md:col-span-5 col-span-full">
+                    <div class="mb-4">
+                        <img src="https://via.placeholder.com/150" class="w-full">
+                    </div>
+                    <div class="bg-white rounded p-4 mb-4 shadow text-gray-900 md:hidden">
+                        <div class="flex flex-col justify-between">
+                            <div class="">
+                                <div class="flex justify-between text-lg">
+                                    <p class="font-medium">Title</p>
+                                    <p class="font-medium">$9.99</p>
+                                </div>
+                                <p class="text-sm mb-1">Author</p>
+                                <p class="text-xs mb-4">21/04/2021</p>
+                                <p class="text-sm mb-4"><%= "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce risus sem, sollicitudin non purus sit amet, dapibus feugiat lorem. Nulla lobortis imperdiet nunc, vitae lobortis mi dignissim a." %></p>
+                                <p class="text-sm mb-4"><%= "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce risus sem, sollicitudin non purus sit amet, dapibus feugiat lorem. Nulla lobortis imperdiet nunc, vitae lobortis mi dignissim a." %></p>
+                            </div>
+                            <div class="mb-4 text-sm flex items-center">
+                                <label class="font-bold">Quantity: </label>
+                                <input type="number" class="mx-4 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm w-20">
+                                <p>5 available</p>
+                            </div>
+                            <div>
+                                <button class="w-full flex justify-center py-2 px-4 mb-2 border-2 border-transparent text-sm font-medium rounded text-white bg-green-500 hover:bg-green-400 focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-pointer">Add to cart</button>
+                                <button class="w-full flex justify-center py-2 px-4 border-2 border-green-500 text-sm font-medium rounded text-green-500 hover:text-white hover:bg-green-500 bg-transparent focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-pointer">Buy now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:col-span-5 col-span-full bg-white rounded p-4 shadow text-gray-900">
+                        <h2 class="text-xl font-extrabold text-gray-900 mb-4">Comments</h2>
+                        <div class="border-b py-4">
+                            <h3 class="font-bold mb-1">Username</h3>
+                            <p class="text-xs mb-1">04/11/2021 11:00:00AM</p>
+                            <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel massa sed leo rutrum lobortis sit amet in ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Praesent vulputate, arcu et mollis aliquet, sapien magna dictum ante, in scelerisque nisl magna non risus. Donec mattis nibh et elementum tincidunt.</p>
+                        </div>
+                        <div class="border-b py-4">
+                            <h3 class="font-bold mb-1">Username</h3>
+                            <p class="text-xs mb-1">04/11/2021 11:00:00AM</p>
+                            <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel massa sed leo rutrum lobortis sit amet in ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Praesent vulputate, arcu et mollis aliquet, sapien magna dictum ante, in scelerisque nisl magna non risus. Donec mattis nibh et elementum tincidunt.</p>
+                        </div>
+                        <%= form_with class: "w-full mt-4" do |f| %>
+                            <div class="field mb-2">
+                                <%= f.text_area :description, class: "block w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm", rows: 3 %>
+                            </div>
+                            <%= f.submit "Submit Comment", class: "w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded text-white bg-green-500 hover:bg-green-400 focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-pointer" %>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="md:col-span-3 col-span-full bg-white rounded p-4 shadow text-gray-900 hidden md:block sticky top-0">
+                    <div class="flex flex-col justify-between">
+                        <div class="">
+                            <div class="flex justify-between text-lg">
+                                <p class="font-medium">Title</p>
+                                <p class="font-medium">$9.99</p>
+                            </div>
+                            <p class="text-sm mb-1">Author</p>
+                            <p class="text-xs mb-4">21/04/2021</p>
+                            <p class="text-sm mb-4"><%= "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce risus sem, sollicitudin non purus sit amet, dapibus feugiat lorem. Nulla lobortis imperdiet nunc, vitae lobortis mi dignissim a." %></p>
+                            <p class="text-sm mb-4"><%= "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce risus sem, sollicitudin non purus sit amet, dapibus feugiat lorem. Nulla lobortis imperdiet nunc, vitae lobortis mi dignissim a." %></p>
+                        </div>
+                        <div class="mb-4 text-sm flex items-center">
+                            <label class="font-bold">Quantity: </label>
+                            <input type="number" class="mx-4 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm w-20">
+                            <p>5 available</p>
+                        </div>
+                        <div>
+                            <button class="w-full flex justify-center py-2 px-4 mb-2 border-2 border-transparent text-sm font-medium rounded text-white bg-green-500 hover:bg-green-400 focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-pointer">Add to cart</button>
+                            <button class="w-full flex justify-center py-2 px-4 border-2 border-green-500 text-sm font-medium rounded text-green-500 hover:text-white hover:bg-green-500 bg-transparent focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-pointer">Buy now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%= javascript_pack_tag 'navbar' %>
+<%= javascript_pack_tag 'products' %>
