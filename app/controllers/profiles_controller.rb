@@ -1,4 +1,6 @@
 class ProfilesController < ApplicationController
+    before_action  :get_categories
+
     def purchase
     end
 
@@ -7,4 +9,10 @@ class ProfilesController < ApplicationController
 
     def balance
     end
+
+    private
+
+    def get_categories
+        @categories = Category.all[0..3]
+      end
 end

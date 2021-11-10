@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to:'static_pages#home'
 
   get "products", to: "products#index"
+  get "products/new", to: "products#new"
   get "/products/:slug", to: "products#show"
 
   get "/profile/purchase", to: "profiles#purchase"

@@ -6,10 +6,10 @@
                 <button class="w-8 h-8 md:hidden text-xl text-gray-700 hover:bg-white transition ease-in-out duration-150 rounded-md" id="navbar__btn"><i class="fas fa-bars"></i></button>
             </div>
             <ul class="hidden md:flex flex-col md:flex-row text-sm font-medium md:ml-5" id="navbar__menu1">
-                <li class="hover:bg-white text-gray-700 transition ease-in-out duration-150 rounded-md md:rounded-none"><%= link_to "Furniture", products_path(category: "furnitures"), class: "block p-5 leading-4", style: "height: 56px;" %><li>
-                <li class="hover:bg-white hover:text-gray-700 transition ease-in-out duration-150 rounded-md md:rounded-none"><%= link_to "Clothes", products_path(category: "clothes"), class: "block p-5 leading-4", style: "height: 56px;" %><li>
-                <li class="hover:bg-white hover:text-gray-700 transition ease-in-out duration-150 rounded-md md:rounded-none"><%= link_to "Exercise", products_path(category: "exercise"), class: "block p-5 leading-4", style: "height: 56px;" %><li>
-                <li class="hover:bg-white hover:text-gray-700 transition ease-in-out duration-150 rounded-md md:rounded-none"><%= link_to "More...", products_path, class: "block p-5 leading-4", style: "height: 56px;" %><li>
+                <% @categories.each do |category| %>
+                    <li class="hover:bg-white text-gray-700 transition ease-in-out duration-150 rounded-md md:rounded-none"><%= link_to category.title, products_path(category: category.title), class: "block p-5 leading-4", style: "height: 56px;" %></li>
+                <% end %>
+                <li class="hover:bg-white hover:text-gray-700 transition ease-in-out duration-150 rounded-md md:rounded-none"><%= link_to "More...", products_path(category: "all"), class: "block p-5 leading-4", style: "height: 56px;" %></li>
             </ul>
         </div>
         <ul class="hidden md:flex justify-center" id="navbar__menu2">
