@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   get "/profile/purchase", to: "profiles#purchase"
   get "/profile/sale", to: "profiles#sale"
   get "/profile/balance", to: "profiles#balance"
+  get "/profile/cart", to: "profiles#cart"
 end
