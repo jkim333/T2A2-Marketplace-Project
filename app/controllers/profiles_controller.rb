@@ -10,9 +10,12 @@ class ProfilesController < ApplicationController
     def balance
     end
 
+    def ads
+    end
+
     private
 
     def get_categories
-        @categories = Category.all[0..3]
-      end
+      @categories = Category.all[0..3]
+    end
 end

@@ -1,5 +1,25 @@
 <aside class="md:col-span-2 col-span-full">
     <ul class="">
+        <% if yield(:title) == "My Ads" %>
+            <li class="bg-white rounded-sm transition-colors duration-150 border-r-4 border-green-500">
+                <%= link_to profile_ads_path, class: "p-2 flex items-center cursor-pointer w-full" do %>
+                    <span class="mr-2 text-green-500">
+                        <i class="fas fa-ad"></i>
+                    </span>
+                    My Ads
+                <% end %>
+            </li>
+        <% else %>
+            <li class="rounded-sm transition-colors duration-150">
+                <%= link_to profile_ads_path, class: "p-2 flex items-center cursor-pointer w-full" do %>
+                    <span class="mr-2 text-green-500">
+                        <i class="fas fa-ad"></i>
+                    </span>
+                    My Ads
+                <% end %>
+            </li>
+        <% end %>
+
         <% if yield(:title) == "Purchase history" %>
             <li class="bg-white rounded-sm transition-colors duration-150 border-r-4 border-green-500">
                 <%= link_to profile_purchase_path, class: "p-2 flex items-center cursor-pointer w-full" do %>
