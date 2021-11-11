@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
     category_slug = params[:category]
     min_price = params[:min_price].nil? ? nil : params[:min_price].to_f * 100
     max_price = params[:max_price].nil? ? nil : params[:max_price].to_f * 100
+    @search = params[:search]
 
     if category_slug == 'all'
       @category = 'all'
@@ -17,6 +18,10 @@ class ProductsController < ApplicationController
         @products = Product.where("price <= ?", max_price)
       else
         @products = Product.all
+      end
+
+      if @search
+        @products = @products.where("title ilike ?", "%#{@search}%")
       end
 
       @category_counts = Product.group(:category_id).count
@@ -41,9 +46,13 @@ class ProductsController < ApplicationController
           @products = category.products
         end
 
+        if @search
+          @products = @products.where("title ilike ?", "%#{@search}%")
+        end
+
         @category_counts = Product.group(:category_id).count
         @min_price = min_price.nil? ? nil : min_price /100
-      @max_price = max_price.nil? ? nil : max_price /100
+        @max_price = max_price.nil? ? nil : max_price /100
       end
     end
   end

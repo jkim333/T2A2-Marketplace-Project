@@ -5,6 +5,14 @@
     <div class="max-w-6xl mx-auto py-8">
         <div class="grid grid-cols-7 gap-8">
             <aside class="md:col-span-2 col-span-full text-gray-900">
+                <div class="mb-4">
+                    <p class="text-sm mb-1"><%= link_to "Home", root_path, class: "hover:underline" %><i class="fas fa-chevron-right text-xs mx-2 text-gray-400"></i><%= link_to @category == "all" ? "All" : @category.title, @category == "all" ? products_path(category: "all") : products_path(category: @category.slug), class: "hover:underline" %><i class="fas fa-chevron-right text-xs mx-2 text-gray-400"></i></p>
+                    <% if @search && @search.strip != "" %>
+                        <p class="text-xl tracking-wide"><%= @products.count %> <%= "result".pluralize(@products.count).capitalize %>: <span class="font-bold"><%= @search %></span></p>
+                    <% else %>
+                        <p class="text-xl tracking-wide"><%= @products.count %> <%= "result".pluralize(@products.count).capitalize %>
+                    <% end %>
+                </div>
                 <div>
                     <ul>
                         <li class="px-1 py-2 block font-bold">Categories</li>
@@ -42,6 +50,7 @@
                                     <%= form.text_field :min_price, class: "border border-gray-300 shadow-sm focus:outline-none focus:border-green-500 text-sm p-2", autocomplete: "off", placeholder: "Min ($)", value: @min_price.nil? ? "" : @min_price %>
                                     <%= form.text_field :max_price, class: "border border-gray-300 shadow-sm focus:outline-none focus:border-green-500 text-sm p-2", autocomplete: "off", placeholder: "Max ($)", value: @max_price.nil? ? "" : @max_price %>
                                 </div>
+                                <%= form.hidden_field :search, value: @search, id: "search_input_hidden" %>
                                 <%= form.submit "Search", class: "p-2 border-2 border-green-500 font-medium rounded-sm text-green-500 bg-transparent hover:bg-green-500 hover:text-white focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-pointer" %>
                             <% end %>
                         </li>
@@ -85,4 +94,4 @@
 </div>
 
 <%= javascript_pack_tag 'navbar' %>
-<%= javascript_pack_tag 'products' %>
+<%= javascript_pack_tag 'hero' %>
