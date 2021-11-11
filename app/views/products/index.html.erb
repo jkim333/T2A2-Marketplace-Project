@@ -9,34 +9,38 @@
                     <ul>
                         <li class="px-1 py-2 block font-bold">Categories</li>
                         <li>
-                            <%= link_to products_path, class: "transition-colors duration-150 px-2 py-2 block rounded-sm hover:bg-gray-300 bg-gray-300" do %>
-                                All (10)
+                            <% if @category == 'all' %>
+                                <%= link_to products_path(category: "all"), class: "transition-colors duration-150 px-2 py-2 block rounded-sm hover:bg-gray-300 bg-gray-300" do %>
+                                    All (<%= @category_counts.values.sum %>)
+                                <% end %>
+                            <% else %>
+                                <%= link_to products_path(category: "all"), class: "transition-colors duration-150 px-2 py-2 block rounded-sm hover:bg-gray-300" do %>
+                                    All (<%= @category_counts.values.sum %>)
+                                <% end %>
                             <% end %>
                         </li>
-                        <li>
-                            <%= link_to products_path, class: "transition-colors duration-150 px-2 py-2 block rounded-sm hover:bg-gray-300" do %>
-                                Furnitures (3)
-                            <% end %>
-                        </li>
-                        <li>
-                            <%= link_to products_path, class: "transition-colors duration-150 px-2 py-2 block rounded-sm hover:bg-gray-300" do %>
-                                Clothes (3)
-                            <% end %>
-                        </li>
-                        <li>
-                            <%= link_to products_path, class: "transition-colors duration-150 px-2 py-2 block rounded-sm hover:bg-gray-300" do %>
-                                Exercise (3)
-                            <% end %>
-                        </li>
+                        <% @categories.each do |category| %>
+                            <li>
+                                <% if @category == category %>
+                                    <%= link_to products_path(category: category.slug), class: "transition-colors duration-150 px-2 py-2 block rounded-sm hover:bg-gray-300 bg-gray-300" do %>
+                                        <%= "#{category.title} (#{@category_counts[category.id].blank? ? 0 : @category_counts[category.id]})" %>
+                                    <% end %>
+                                <% else %>
+                                    <%= link_to products_path(category: category.slug), class: "transition-colors duration-150 px-2 py-2 block rounded-sm hover:bg-gray-300" do %>
+                                        <%= "#{category.title} (#{@category_counts[category.id].blank? ? 0 : @category_counts[category.id]})" %>
+                                    <% end %>
+                                <% end %>
+                            </li>
+                        <% end %>
                     </ul>
                     <hr class="my-1" />
                     <ul>
                         <li class="px-1 py-2 block font-bold">Price</li>
                         <li>
-                            <%= form_with url: "/products", method: :get, class: "flex flex-col" do |form| %>
+                            <%= form_with url: products_path(category: @category == "all" ? "all" : @category.slug), method: :get, class: "flex flex-col" do |form| %>
                                 <div class="grid grid-cols-2 gap-2 mb-2">
-                                    <%= form.number_field :min_price, class: "border border-gray-300 shadow-sm focus:outline-none focus:border-green-500 text-sm p-2", autocomplete: "off", placeholder: "Min ($)" %>
-                                    <%= form.number_field :max_price, class: "border border-gray-300 shadow-sm focus:outline-none focus:border-green-500 text-sm p-2", autocomplete: "off", placeholder: "Max ($)" %>
+                                    <%= form.text_field :min_price, class: "border border-gray-300 shadow-sm focus:outline-none focus:border-green-500 text-sm p-2", autocomplete: "off", placeholder: "Min ($)", value: @min_price.nil? ? "" : @min_price %>
+                                    <%= form.text_field :max_price, class: "border border-gray-300 shadow-sm focus:outline-none focus:border-green-500 text-sm p-2", autocomplete: "off", placeholder: "Max ($)", value: @max_price.nil? ? "" : @max_price %>
                                 </div>
                                 <%= form.submit "Search", class: "p-2 border-2 border-green-500 font-medium rounded-sm text-green-500 bg-transparent hover:bg-green-500 hover:text-white focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-pointer" %>
                             <% end %>
@@ -46,38 +50,34 @@
             </aside>
             <div class="md:col-span-5 col-span-full">
                 <div class="grid gap-4">
-                    <article class="flex flex-col sm:flex-row bg-white rounded-md p-4 shadow text-gray-900">
-                        <img src="https://via.placeholder.com/150" class="w-36 h-36">
-                        <div class="flex flex-col justify-between sm:ml-4">
-                            <div class="py-4 sm:py-0">
-                                <div class="flex justify-between">
-                                    <p class="font-medium">Title</p>
-                                    <p class="font-medium">$9.99</p>
-                                </div>
-                                <p class="text-sm"><%= "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce risus sem, sollicitudin non purus sit amet, dapibus feugiat lorem. Nulla lobortis imperdiet nunc, vitae lobortis mi dignissim a.".truncate(150) %></p>
-                            </div>
-                            <div class="flex justify-between items-center">
-                                <div></div>
-                                <p class="italic text-sm">09/11/2021</p>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="flex flex-col sm:flex-row bg-white rounded-md p-4 shadow text-gray-900">
-                        <img src="https://via.placeholder.com/150" class="w-36 h-36">
-                        <div class="flex flex-col justify-between sm:ml-4">
-                            <div class="py-4 sm:py-0">
-                                <div class="flex justify-between">
-                                    <p class="font-medium">Title</p>
-                                    <p class="font-medium">$9.99</p>
-                                </div>
-                                <p class="text-sm"><%= "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce risus sem, sollicitudin non purus sit amet, dapibus feugiat lorem. Nulla lobortis imperdiet nunc, vitae lobortis mi dignissim a.".truncate(150) %></p>
-                            </div>
-                            <div class="flex justify-between items-center">
-                                <div></div>
-                                <p class="italic text-sm">09/11/2021</p>
-                            </div>
-                        </div>
-                    </article>
+                    <% if @products.count == 0 %>
+                        <article class="p-4 text-gray-900 text-center font-bold">
+                            No products found
+                        </article>
+                    <% else %>
+                        <% @products.each do |product| %>
+                            <%= link_to products_show_path(category: @category == "all" ? "all" : @category.slug, slug: product.slug), id: "products-index__product" do %>
+                                <article class="flex flex-col sm:flex-row bg-white rounded-md p-4 shadow text-gray-900">
+                                    <div class="w-36 h-36">
+                                        <img src="https://via.placeholder.com/150" class="">
+                                    </div>
+                                    <div class="flex flex-col justify-between sm:ml-4 flex-1">
+                                        <div class="py-4 sm:py-0">
+                                            <div class="flex justify-between">
+                                                <p class="font-medium transition duration-150 ease-in-out" id="products-index__product-title"><%= product.title.capitalize %></p>
+                                                <p class="font-medium"><%= number_to_currency product.price/100 %></p>
+                                            </div>
+                                            <p class="text-sm"><%= product.description.truncate(150) %></p>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <div></div>
+                                            <p class="italic text-sm"><%= product.created_at %></p>
+                                        </div>
+                                    </div>
+                                </article>
+                            <% end %>
+                        <% end %>
+                    <% end %>
                 </div>
             </div>
         </div>

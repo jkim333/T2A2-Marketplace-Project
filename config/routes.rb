@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'users/registrations' }
   root to:'static_pages#home'
 
-  get "products", to: "products#index"
+  get "/:category/products", to: "products#index", as: "products"
   get "products/new", to: "products#new"
-  get "/products/:slug", to: "products#show"
+  get "/:category/products/:slug", to: "products#show", as: "products_show"
 
   get "/profile/purchase", to: "profiles#purchase"
   get "/profile/sale", to: "profiles#sale"
