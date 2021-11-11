@@ -3,20 +3,22 @@
 
 <div class="px-4 bg-gray-50">
     <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 py-8">
-        <% for i in 0..7 do %>
-            <article class="bg-white rounded-sm p-2 shadow text-gray-900">
-                <div class="bg-gray-100 mb-2 flex justify-center h-32 sm:h-40 relative">
-                    <img src="https://via.placeholder.com/150">
-                    <div class="hidden sm:block bg-black bg-opacity-60 px-3.5 py-2 text-white absolute top-2/3 -left-2 font-medium">
-                        <span class="text-green-500">$</span>
-                        4,300
+        <% @products.each do |product| %>
+            <%= link_to products_show_path(category: "all", slug: product.slug) do %>
+                <article class="bg-white rounded-sm p-2 shadow text-gray-900 hover:shadow-lg transform hover:-translate-y-0.5 duration-300 ease-in-out">
+                    <div class="bg-gray-100 mb-2 flex justify-center h-32 sm:h-40 relative">
+                        <img src="https://via.placeholder.com/150">
+                        <div class="hidden sm:block bg-black bg-opacity-60 px-3.5 py-2 text-white absolute top-2/3 -left-2 font-medium">
+                            <span class="text-green-500">$</span>
+                            <%= number_to_currency product.price/100, unit: "" %>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <p class="text-sm"><%= "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce risus sem, sollicitudin non purus sit amet, dapibus feugiat lorem. Nulla lobortis imperdiet nunc, vitae lobortis mi dignissim a.".truncate(40) %></p>
-                    <p class="sm:hidden text-sm font-medium text-green-500">$ 4,300</p>
-                </div>
-            </article>
+                    <div>
+                        <p class="text-sm"><%= product.title.truncate(40) %></p>
+                        <p class="sm:hidden text-sm font-medium text-green-500">$ <%= number_to_currency product.price/100, unit: "" %></p>
+                    </div>
+                </article>
+            <% end %>
         <% end %>
     </div>
     <div class="flex justify-center items-center pb-16">
