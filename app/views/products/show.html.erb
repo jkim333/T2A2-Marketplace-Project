@@ -16,7 +16,7 @@
                                 <div class="">
                                     <div class="flex justify-between text-lg">
                                         <p class="font-medium"><%= @product.title.capitalize %></p>
-                                        <p class="font-medium"><%= number_to_currency @product.price/100 %></p>
+                                        <p class="font-medium"><%= number_to_currency @product.price/100.0 %></p>
                                     </div>
                                     <p class="text-sm mb-1">Author</p>
                                     <p class="text-xs mb-4"><%= @product.created_at %></p>
@@ -62,7 +62,7 @@
                             <div class="">
                                 <div class="flex justify-between text-lg">
                                     <p class="font-medium"><%= @product.title.capitalize %></p>
-                                    <p class="font-medium"><%= number_to_currency @product.price/100 %></p>
+                                    <p class="font-medium"><%= number_to_currency @product.price/100.0 %></p>
                                 </div>
                                 <p class="text-sm mb-1">Author</p>
                                 <p class="text-xs mb-4"><%= @product.created_at %></p>

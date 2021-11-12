@@ -6,9 +6,12 @@ Rails.application.routes.draw do
   get "products/new", to: "products#new"
   get "/:category/products/:slug", to: "products#show", as: "products_show"
 
-  get "/profile/purchase", to: "profiles#purchase"
-  get "/profile/sale", to: "profiles#sale"
-  get "/profile/balance", to: "profiles#balance"
-  get "/profile/cart", to: "profiles#cart"
-  get "/profile/ads", to: "profiles#ads"
+  get "/profile/purchase", to: "profile#purchase"
+  get "/profile/sale", to: "profile#sale"
+  get "/profile/balance", to: "profile#balance"
+  get "/profile/cart", to: "profile#cart"
+  get "/profile/ads", to: "profile#ads"
+
+  patch "/profile/balance/bank_detail", to: "profile#edit_bank_detail", as: "edit_bank_detail"
+  patch "/profile/balance/balance", to: "profile#edit_balance", as: "edit_balance"
 end

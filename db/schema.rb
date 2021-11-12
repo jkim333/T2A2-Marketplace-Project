@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 2021_11_12_003128) do
   enable_extension "plpgsql"
 
   create_table "bank_details", force: :cascade do |t|
-    t.string "name"
-    t.string "account_number"
-    t.string "bsb"
+    t.string "name", default: ""
+    t.string "account_number", default: ""
+    t.string "bsb", default: ""
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

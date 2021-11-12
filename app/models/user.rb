@@ -13,4 +13,9 @@ class User < ApplicationRecord
             uniqueness: true, length: { maximum: 20 },
             format: { with: /\A[\S]+\z/,
               message: "can't have whitespace characters" }
+
+  after_create do |user|
+    p "*****************************************"
+    BankDetail.create(user_id: user.id)
+  end
 end

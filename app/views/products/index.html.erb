@@ -74,7 +74,7 @@
                                         <div class="py-4 sm:py-0">
                                             <div class="flex justify-between">
                                                 <p class="font-medium transition duration-150 ease-in-out" id="products-index__product-title"><%= product.title.capitalize %></p>
-                                                <p class="font-medium"><%= number_to_currency product.price/100 %></p>
+                                                <p class="font-medium"><%= number_to_currency product.price/100.0 %></p>
                                             </div>
                                             <p class="text-sm"><%= product.description.truncate(150) %></p>
                                         </div>
