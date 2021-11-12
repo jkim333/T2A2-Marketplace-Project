@@ -58,7 +58,34 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.friendly.find(params[:slug])
+    category_slug = params[:category]
+
+    if category_slug == 'all'
+      @category = 'all'
+
+      begin
+        @product = Product.friendly.find(params[:slug])
+      rescue ActiveRecord::RecordNotFound
+        @product = nil
+        @slug = params[:slug]
+      end
+    else
+      category = Category.find_by slug: category_slug
+
+      if !category
+        redirect_to products_show_path(category: "all", slug: params[:slug])
+        return
+      else
+        @category = category
+
+        begin
+          @product = @category.products.friendly.find(params[:slug])
+        rescue ActiveRecord::RecordNotFound
+          @product = nil
+          @slug = params[:slug]
+        end
+      end
+    end
   end
 
   private

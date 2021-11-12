@@ -2,10 +2,12 @@
 
 one:
   quantity: 1
-  transaction_history: one
+  price: 1
+  user: one
   product: one
 
 two:
   quantity: 1
-  transaction_history: two
+  price: 1
+  user: two
   product: two

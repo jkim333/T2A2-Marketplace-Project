@@ -4,7 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :transactions
+  has_many :sale_histories
+  has_many :purchase_histories
+  has_many :products
+  has_one :bank_detail
 
   validates :username, presence: { message: "can't be blank" },
             uniqueness: true, length: { maximum: 20 },

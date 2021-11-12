@@ -6,7 +6,7 @@ class CreateProducts < ActiveRecord::Migration[6.1]
       t.integer :price
       t.integer :stock
       t.integer :views, default: 0
-      t.boolean :listed
+      t.boolean :listed, default: true
       t.references :category, null: false, foreign_key: true
 
       t.timestamps
