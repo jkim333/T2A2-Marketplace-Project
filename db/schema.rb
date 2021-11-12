@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_12_003128) do
+ActiveRecord::Schema.define(version: 2021_11_12_064452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,8 +63,10 @@ ActiveRecord::Schema.define(version: 2021_11_12_003128) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
+    t.bigint "user_id", null: false
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["slug"], name: "index_products_on_slug", unique: true
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "purchase_histories", force: :cascade do |t|
@@ -106,6 +108,7 @@ ActiveRecord::Schema.define(version: 2021_11_12_003128) do
   add_foreign_key "bank_details", "users"
   add_foreign_key "product_images", "products"
   add_foreign_key "products", "categories"
+  add_foreign_key "products", "users"
   add_foreign_key "purchase_histories", "products"
   add_foreign_key "purchase_histories", "users"
   add_foreign_key "sale_histories", "products"

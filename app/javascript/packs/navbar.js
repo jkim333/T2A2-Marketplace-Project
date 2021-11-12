@@ -1,6 +1,6 @@
-navbarBtn = document.getElementById("navbar__btn");
-navbarMenu1 = document.getElementById("navbar__menu1");
-navbarMenu2 = document.getElementById("navbar__menu2");
+const navbarBtn = document.getElementById("navbar__btn");
+const navbarMenu1 = document.getElementById("navbar__menu1");
+const navbarMenu2 = document.getElementById("navbar__menu2");
 
 navbarBtn.addEventListener("click", (e) => {
   if (
@@ -23,8 +23,8 @@ navbarBtn.addEventListener("click", (e) => {
   }
 });
 
-userBtn = document.getElementById("user__btn");
-userDropdown = document.getElementById("user__dropdown");
+const userBtn = document.getElementById("user__btn");
+const userDropdown = document.getElementById("user__dropdown");
 if (userBtn) {
   userBtn.addEventListener("click", (e) => {
     userDropdown.classList.toggle("hidden");

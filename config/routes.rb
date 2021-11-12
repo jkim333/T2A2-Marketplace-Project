@@ -14,4 +14,6 @@ Rails.application.routes.draw do
 
   patch "/profile/balance/bank_detail", to: "profile#edit_bank_detail", as: "edit_bank_detail"
   patch "/profile/balance/balance", to: "profile#edit_balance", as: "edit_balance"
+
+  post "/profile/transaction", to: "profile#create_transaction", as: "create_transaction"
 end

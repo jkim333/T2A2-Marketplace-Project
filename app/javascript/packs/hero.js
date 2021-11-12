@@ -1,4 +1,4 @@
-searchForm = document.getElementById("search-form");
+const searchForm = document.getElementById("search-form");
 
 searchForm.action = `/${searchForm.querySelector("#category").value}/products`;
 
