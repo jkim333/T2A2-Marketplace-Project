@@ -11,17 +11,17 @@ class ProductsController < ApplicationController
       @category = 'all'
 
       if min_price && max_price
-        @products = Product.where("price >= ?", min_price).where("price <= ?", max_price)
+        @products = Product.where("price >= ?", min_price).where("price <= ?", max_price).paginate(page: params[:page])
       elsif min_price
-        @products = Product.where("price >= ?", min_price)
+        @products = Product.where("price >= ?", min_price).paginate(page: params[:page])
       elsif max_price
-        @products = Product.where("price <= ?", max_price)
+        @products = Product.where("price <= ?", max_price).paginate(page: params[:page])
       else
-        @products = Product.all
+        @products = Product.all.paginate(page: params[:page])
       end
 
       if @search
-        @products = @products.where("title ilike ?", "%#{@search}%")
+        @products = @products.where("title ilike ?", "%#{@search}%").paginate(page: params[:page])
       end
 
       @category_counts = Product.group(:category_id).count
@@ -37,17 +37,17 @@ class ProductsController < ApplicationController
         @category = category
 
         if min_price && max_price
-          @products = category.products.where("price >= ?", min_price).where("price <= ?", max_price)
+          @products = category.products.where("price >= ?", min_price).where("price <= ?", max_price).paginate(page: params[:page])
         elsif min_price
-          @products = category.products.where("price >= ?", min_price)
+          @products = category.products.where("price >= ?", min_price).paginate(page: params[:page])
         elsif max_price
-          @products = category.products.where("price <= ?", max_price)
+          @products = category.products.where("price <= ?", max_price).paginate(page: params[:page])
         else
-          @products = category.products
+          @products = category.products.paginate(page: params[:page])
         end
 
         if @search
-          @products = @products.where("title ilike ?", "%#{@search}%")
+          @products = @products.where("title ilike ?", "%#{@search}%").paginate(page: params[:page])
         end
 
         @category_counts = Product.group(:category_id).count

@@ -9,4 +9,6 @@ class Product < ApplicationRecord
   has_many :product_images
 
   validates :title, uniqueness: true
+
+  self.per_page = 5
 end
