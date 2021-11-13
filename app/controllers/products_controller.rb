@@ -88,6 +88,18 @@ class ProductsController < ApplicationController
     end
   end
 
+  def show_json
+    id = params[:id].to_i
+    
+    begin
+      product = Product.find(id)
+    rescue ActiveRecord::RecordNotFound
+      product = nil
+    end
+
+    render json: product
+  end
+
   private
 
   def get_categories

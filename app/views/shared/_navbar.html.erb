@@ -15,10 +15,10 @@
         <ul class="hidden md:flex justify-center" id="navbar__menu2">
             <% if user_signed_in? %>
                 <div class="flex items-center px-1" style="height: 56px;">
-                    <button class="text-2xl py-1 px-1.5 hover:bg-white text-gray-700 transition ease-in-out duration-150 rounded-md relative">
+                    <%= link_to profile_cart_path, class: "text-2xl py-1 px-1.5 hover:bg-white text-gray-700 transition ease-in-out duration-150 rounded-md relative" do %>
                         <i class="fas fa-shopping-cart"></i>
-                        <div class="absolute top-0 right-0 text-xs bg-white flex justify-center items-center rounded-full w-5 h-5 text-green-500 font-medium">30</div>
-                    </button>
+                        <div class="absolute top-0 right-0 text-xs bg-white flex justify-center items-center rounded-full w-5 h-5 text-green-500 font-medium" id="navbar__cart"></div>
+                    <% end %>
                 </div>
                 <div class="flex items-center px-1 relative" style="height: 56px;">
                     <button class="text-2xl py-1 px-1.5 hover:bg-white text-gray-700 transition ease-in-out duration-150 rounded-md" id="user__btn"><i class="far fa-user-circle"></i><i class="fas fa-caret-down text-base align-middle ml-0.5"></i></button>

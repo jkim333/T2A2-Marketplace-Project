@@ -41,3 +41,11 @@ if (userBtn) {
     });
   });
 }
+
+const navbarCart = document.getElementById("navbar__cart");
+const cartItems = JSON.parse(sessionStorage.getItem("cartItems"));
+if (cartItems && cartItems.length > 0) {
+  navbarCart.textContent = cartItems.length;
+} else {
+  navbarCart.textContent = 0;
+}

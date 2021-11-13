@@ -17,7 +17,7 @@
                                     <div class="">
                                         <div class="flex justify-between text-lg">
                                             <p class="font-medium"><%= @product.title.capitalize %></p>
-                                            <p class="font-medium"><%= number_to_currency @product.price/100.0 %></p>
+                                            <p class="font-medium products-show__price" data-price=<%= "#{@product.price}"%>><%= number_to_currency @product.price/100.0 %></p>
                                         </div>
                                         <p class="text-sm mb-1"><%= @product.user.username %></p>
                                         <p class="text-xs mb-4"><%= @product.created_at %></p>
@@ -25,7 +25,7 @@
                                     </div>
                                     <div class="mb-4 text-sm flex items-center">
                                         <%= form.label :quantity, "Quantity:", class: "font-bold" %>
-                                        <%= form.number_field :quantity, class: "mx-4 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm w-20", value: 1, id: "products-show__quantity1" %>
+                                        <%= form.number_field :quantity, class: "mx-4 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm w-20", value: 1, id: "products-show__quantity1", min: 1 %>
                                         <%= form.hidden_field :product_id, value: @product.id %>
                                         <% if @product.stock > 0 %>
                                             <p><%= @product.stock %> available</p>
@@ -35,7 +35,7 @@
                                     </div>
                                     <div>
                                         <% if @product.stock > 0 %>
-                                            <button type="button" class="w-full flex justify-center py-2 px-4 mb-2 border-2 border-transparent text-sm font-medium rounded text-white bg-green-500 hover:bg-green-400 focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-pointer">Add to cart</button>
+                                            <button type="button" class="w-full flex justify-center py-2 px-4 mb-2 border-2 border-transparent text-sm font-medium rounded text-white bg-green-500 hover:bg-green-400 focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-pointer add-to-cart">Add to cart</button>
                                             <%= form.submit "Buy now", class: "w-full flex justify-center py-2 px-4 border-2 border-green-500 text-sm font-medium rounded text-green-500 hover:text-white hover:bg-green-500 bg-transparent focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-pointer" %>
                                         <% else %>
                                             <button class="w-full flex justify-center py-2 px-4 mb-2 border-2 border-transparent text-sm font-medium rounded text-white bg-green-500 hover:bg-green-400 focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-not-allowed hover:opacity-50" disabled>Add to cart</button>
@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="mb-4 text-sm flex items-center">
                                     <%= form.label :quantity, "Quantity:", class: "font-bold" %>
-                                    <%= form.number_field :quantity, class: "mx-4 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm w-20", value: 1, id: "products-show__quantity2" %>
+                                    <%= form.number_field :quantity, class: "mx-4 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm w-20", value: 1, id: "products-show__quantity2", min: 1 %>
                                     <%= form.hidden_field :product_id, value: @product.id %>
                                     <% if @product.stock > 0 %>
                                         <p><%= @product.stock %> available</p>
@@ -89,7 +89,7 @@
                                 </div>
                                 <div>
                                     <% if @product.stock > 0 %>
-                                        <button type="button" class="w-full flex justify-center py-2 px-4 mb-2 border-2 border-transparent text-sm font-medium rounded text-white bg-green-500 hover:bg-green-400 focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-pointer">Add to cart</button>
+                                        <button type="button" class="w-full flex justify-center py-2 px-4 mb-2 border-2 border-transparent text-sm font-medium rounded text-white bg-green-500 hover:bg-green-400 focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-pointer add-to-cart">Add to cart</button>
                                         <%= form.submit "Buy now", class: "w-full flex justify-center py-2 px-4 border-2 border-green-500 text-sm font-medium rounded text-green-500 hover:text-white hover:bg-green-500 bg-transparent focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-pointer" %>
                                     <% else %>
                                         <button class="w-full flex justify-center py-2 px-4 mb-2 border-2 border-transparent text-sm font-medium rounded text-white bg-green-500 hover:bg-green-400 focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-not-allowed hover:opacity-50" disabled>Add to cart</button>

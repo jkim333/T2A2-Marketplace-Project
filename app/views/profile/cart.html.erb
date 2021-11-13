@@ -8,29 +8,14 @@
                     <div class="bg-white rounded p-4 shadow text-gray-900 mb-4">
                         <div class="flex justify-between items-center pb-4">
                             <h1 class="font-medium text-xl">My Cart</h1>
-                            <p class="text-sm text-gray-500">Items are reserved for 60 minutes</p>
                         </div>
-                        <div>
+                        <div id="profile-cart__cart-items-container">
                             <article class="flex flex-col sm:flex-row py-6 text-gray-900 border-t">
-                                <img src="https://via.placeholder.com/150" class="w-36 h-36">
-                                <div class="flex flex-col justify-between sm:ml-4 w-full">
-                                    <div class="py-4 sm:py-0">
-                                        <div class="flex justify-between mb-2">
-                                            <p class="font-medium">$9.99</p>
-                                            <p class="font-medium"><i class="fas fa-times"></i></p>
-                                        </div>
-                                        <p class="text-sm mb-2 font-bold">Title</p>
-                                        <div class="mb-4 text-sm flex items-center">
-                                            <label class="">Quantity: </label>
-                                            <input type="number" class="mx-4 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm w-20">
-                                            <p>5 available</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                Loading...
                             </article>
                         </div>
                         <div class="flex justify-end font-bold">
-                            <span class="mr-8">Sub-total</span> $100.00
+                            <span class="mr-8">Sub-total</span><span id="profile-cart__cart-items-subtotal1">-</span>
                         </div>
                     </div>
                     <div class="bg-white rounded p-4 shadow text-gray-900 md:hidden">
@@ -41,7 +26,7 @@
                                 </div>
                                 <div class="flex justify-between items-center mb-2">
                                     <p class="font-medium">Sub-total</p>
-                                    <p>$100.00</p>
+                                    <p id="profile-cart__cart-items-subtotal2">-</p>
                                 </div>
                                 <div class="flex justify-between items-center mb-2">
                                     <p class="font-medium">Delivery</p>
@@ -49,7 +34,7 @@
                                 </div>
                             </div>
                             <div>
-                                <button class="w-full flex justify-center py-2 px-4 border-2 border-transparent text-sm font-medium rounded text-white bg-green-500 hover:bg-green-400 focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-pointer mt-2">Checkout</button>
+                                <button class="w-full flex justify-center py-2 px-4 border-2 border-transparent text-sm font-medium rounded text-white bg-indigo-500 hover:bg-indigo-400 focus:outline-none focus:border-indigo-500 focus:shadow-outline-indigo transition duration-150 ease-in-out cursor-pointer mt-2 profile-cart__checkout">Checkout</button>
                             </div>
                         </div>
                     </div>
@@ -62,7 +47,7 @@
                             </div>
                             <div class="flex justify-between items-center mb-2">
                                 <p class="font-medium">Sub-total</p>
-                                <p>$100.00</p>
+                                <p id="profile-cart__cart-items-subtotal3">-</p>
                             </div>
                             <div class="flex justify-between items-center mb-2">
                                 <p class="font-medium">Delivery</p>
@@ -70,7 +55,7 @@
                             </div>
                         </div>
                         <div>
-                            <button class="w-full flex justify-center py-2 px-4 border-2 border-transparent text-sm font-medium rounded text-white bg-green-500 hover:bg-green-400 focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-pointer mt-2">Checkout</button>
+                            <button class="w-full flex justify-center py-2 px-4 border-2 border-transparent text-sm font-medium rounded text-white bg-indigo-500 hover:bg-indigo-400 focus:outline-none focus:border-indigo-500 focus:shadow-outline-indigo transition duration-150 ease-in-out cursor-pointer mt-2 profile-cart__checkout">Checkout</button>
                         </div>
                     </div>
                 </div>
@@ -80,4 +65,4 @@
 </div>
 
 <%= javascript_pack_tag 'navbar' %>
-<%= javascript_pack_tag 'products' %>
+<%= javascript_pack_tag 'cart' %>
