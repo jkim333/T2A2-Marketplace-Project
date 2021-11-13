@@ -12,7 +12,18 @@ quantity1.addEventListener("focusout", () => {
     document.getElementById("products-show__quantity1").value
   );
   if (quantity < 1) {
-    alert("Quantity you've entered can't be less than 1!");
+    const div = document.createElement("div");
+    const div2 = document.createElement("div");
+    div.className = "rounded-md bg-red-400 p-4 mb-3 text-white px-5 text-sm";
+    div2.className = "rounded-md bg-red-400 p-4 mb-3 text-white px-5 text-sm";
+    div.textContent = "Quantity you've entered can't be less than 1!";
+    div2.textContent = "Quantity you've entered can't be less than 1!";
+    quantity1.parentElement.parentElement.parentElement.prepend(div);
+    quantity2.parentElement.parentElement.parentElement.prepend(div2);
+    setTimeout(() => {
+      div.remove();
+      div2.remove();
+    }, 2000);
     return;
   }
 });
@@ -28,8 +39,18 @@ quantity2.addEventListener("focusout", () => {
     document.getElementById("products-show__quantity2").value
   );
   if (quantity < 1) {
-    alert("Quantity you've entered can't be less than 1!");
-    document.getElementById("products-show__quantity2").value = 1;
+    const div = document.createElement("div");
+    const div2 = document.createElement("div");
+    div.className = "rounded-md bg-red-400 p-4 mb-3 text-white px-5 text-sm";
+    div2.className = "rounded-md bg-red-400 p-4 mb-3 text-white px-5 text-sm";
+    div.textContent = "Quantity you've entered can't be less than 1!";
+    div2.textContent = "Quantity you've entered can't be less than 1!";
+    quantity1.parentElement.parentElement.parentElement.prepend(div);
+    quantity2.parentElement.parentElement.parentElement.prepend(div2);
+    setTimeout(() => {
+      div.remove();
+      div2.remove();
+    }, 2000);
     return;
   }
 });
@@ -47,7 +68,18 @@ addToCartBtns.forEach((btn) => {
     );
 
     if (quantity < 1) {
-      alert("Quantity you've entered can't be less than 1!");
+      const div = document.createElement("div");
+      const div2 = document.createElement("div");
+      div.className = "rounded-md bg-red-400 p-4 mb-3 text-white px-5 text-sm";
+      div2.className = "rounded-md bg-red-400 p-4 mb-3 text-white px-5 text-sm";
+      div.textContent = "Quantity you've entered can't be less than 1!";
+      div2.textContent = "Quantity you've entered can't be less than 1!";
+      quantity1.parentElement.parentElement.parentElement.prepend(div);
+      quantity2.parentElement.parentElement.parentElement.prepend(div2);
+      setTimeout(() => {
+        div.remove();
+        div2.remove();
+      }, 2000);
       return;
     }
 
@@ -74,5 +106,20 @@ addToCartBtns.forEach((btn) => {
       sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
       navbarCart.textContent = 1;
     }
+
+    const div = document.createElement("div");
+    const div2 = document.createElement("div");
+    div.className =
+      "rounded-md bg-green-200 p-4 mb-3 text-gray-900 px-5 text-sm";
+    div2.className =
+      "rounded-md bg-green-200 p-4 mb-3 text-gray-900 px-5 text-sm";
+    div.textContent = "You've added this item to the cart.";
+    div2.textContent = "You've added this item to the cart.";
+    quantity1.parentElement.parentElement.parentElement.prepend(div);
+    quantity2.parentElement.parentElement.parentElement.prepend(div2);
+    setTimeout(() => {
+      div.remove();
+      div2.remove();
+    }, 2000);
   });
 });
