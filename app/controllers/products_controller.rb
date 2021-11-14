@@ -93,6 +93,9 @@ class ProductsController < ApplicationController
     
     begin
       product = Product.find(id)
+      product_image = url_for(product.product_images.first.image)
+      product = product.as_json
+      product[:image] = product_image
     rescue ActiveRecord::RecordNotFound
       product = nil
     end

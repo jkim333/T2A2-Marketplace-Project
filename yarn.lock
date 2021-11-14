@@ -996,6 +996,11 @@
     webpack-cli "^3.3.12"
     webpack-sources "^1.4.3"
 
+"@splidejs/splide@^3.3.1":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@splidejs/splide/-/splide-3.3.1.tgz#9cc7fdcb7192d8549051b4acddf18793fafb67c9"
+  integrity sha512-wb2ZQ7R/7aEJrpC68QNAuPVpsrix9hz3/gTgwy4org+6S2Kf4sQHZzWzj9Yd7NFxlNGVtnvZJjWqPwsrAgTiZg==
+
 "@tailwindcss/postcss7-compat@^2.2.17":
   version "2.2.17"
   resolved "https://registry.yarnpkg.com/@tailwindcss/postcss7-compat/-/postcss7-compat-2.2.17.tgz#dc78f3880a2af84163150ff426a39e42b9ae8922"

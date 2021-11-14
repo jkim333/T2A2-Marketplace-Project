@@ -1,3 +1,33 @@
+import Splide from "@splidejs/splide";
+import "@splidejs/splide/dist/css/splide.min.css";
+
+const main = new Splide("#main-slider", {
+  type: "fade",
+  rewind: true,
+  pagination: false,
+  arrows: false,
+});
+
+const thumbnails = new Splide("#thumbnail-slider", {
+  fixedWidth: 100,
+  fixedHeight: 60,
+  gap: 10,
+  rewind: true,
+  pagination: false,
+  cover: true,
+  isNavigation: true,
+  breakpoints: {
+    600: {
+      fixedWidth: 60,
+      fixedHeight: 44,
+    },
+  },
+});
+
+main.sync(thumbnails);
+main.mount();
+thumbnails.mount();
+
 const quantity1 = document.getElementById("products-show__quantity1");
 const quantity2 = document.getElementById("products-show__quantity2");
 

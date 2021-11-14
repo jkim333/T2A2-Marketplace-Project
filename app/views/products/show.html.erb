@@ -9,7 +9,32 @@
                 <div class="grid grid-cols-8 gap-4 md:items-start">
                     <div class="md:col-span-5 col-span-full">
                         <div class="mb-4">
-                            <img src="https://via.placeholder.com/150" class="w-full">
+                            <div class="bg-white shadow rounded-b">
+                                <div id="main-slider" class="splide">
+                                    <div class="splide__track">
+                                        <ul class="splide__list">
+                                            <% @product.product_images.each do |product_image| %>
+                                                <li class="splide__slide">
+                                                    <%= image_tag product_image.image, class: "" %>
+                                                </li>
+                                            <% end %>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="p-2">
+                                    <div id="thumbnail-slider" class="splide">
+                                        <div class="splide__track">
+                                            <ul class="splide__list">
+                                                <% @product.product_images.each do |product_image| %>
+                                                    <li class="splide__slide">
+                                                        <%= image_tag product_image.image %>
+                                                    </li>
+                                                <% end %>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="bg-white rounded p-4 mb-4 shadow text-gray-900 md:hidden">
                             <%= form_with url: create_transaction_path, method: :post, class: "" do |form| %>
@@ -116,7 +141,7 @@
         <% else %>
             <p class="mb-4 text-sm"><%= link_to "Home", root_path, class: "hover:underline" %><i class="fas fa-chevron-right text-xs mx-2 text-gray-400"></i><%= link_to @category == "all" ? "All" : @category.title, @category == "all" ? products_path(category: "all") : products_path(category: @category.slug), class: "hover:underline" %><i class="fas fa-chevron-right text-xs mx-2 text-gray-400"></i><%= @slug.capitalize %></p>
             <article class="p-4 text-gray-900 text-center font-bold">
-                No product named "<%= @slug.capitalize %>" was found
+                No product was found
             </article>
         <% end %>
     </div>

@@ -45,8 +45,12 @@ if (cartItems && cartItems.length > 0) {
         article.dataset.productId = `${product.data.id}`;
         article.innerHTML = `
           <div class="flex flex-col sm:flex-row py-6 text-gray-900">
-            <img src="https://via.placeholder.com/150" class="w-36 h-36">
-            <div class="flex flex-col justify-between sm:ml-4 w-full">
+            <div class="w-36 h-36 flex justify-center items-center bg-gray-100">
+              <img src="${
+                product.data.image
+              }" class="object-contain max-h-full">
+            </div>
+            <div class="flex flex-col justify-between sm:ml-4 flex-1">
                 <div class="py-4 sm:py-0">
                     <div class="flex justify-between mb-2">
                         <p class="font-medium">${formatter.format(

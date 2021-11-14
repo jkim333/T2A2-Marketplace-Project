@@ -39,3 +39,15 @@
 .pagination > .next_page {
   font-size: 0.875rem;
 }
+
+.splide__slide {
+  opacity: 0.3;
+}
+
+.splide__slide.is-active {
+  opacity: 1;
+}
+
+.splide__arrows {
+  display: none;
+}
