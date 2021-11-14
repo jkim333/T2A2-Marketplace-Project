@@ -8,7 +8,10 @@ class Product < ApplicationRecord
   has_many :purchase_histories
   has_many :product_images
 
-  validates :title, uniqueness: true
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :price, numericality: { only_integer: true, greater_than: 0 }
+  validates :stock, numericality: { only_integer: true, greater_than: 0 }
 
   self.per_page = 5
 end

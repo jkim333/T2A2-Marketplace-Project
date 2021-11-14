@@ -4,7 +4,18 @@
     <div class="flex flex-col items-center">
         <h2 class="text-3xl font-extrabold text-gray-900">Post an Ad</h2>
     
-        <%= form_with class: "bg-white py-8 px-10 shadow rounded-lg my-8 max-w-md w-full" do |f| %>
+    <%# model: @bank_detail, url: edit_bank_detail_path, method: :patch, class: "" %>
+
+        <%= form_with url: products_new_path, class: "bg-white py-8 px-10 shadow rounded-lg my-8 max-w-md w-full", multipart: true do |f| %>
+            <% if flash[:alert_ad] %>
+                <ul class="rounded-md bg-red-400 p-4 mb-3 text-white">
+                    <% flash[:alert_ad].each do |message| %>
+                        <div class="px-5 text-sm">
+                            <li class="list-disc"><%= message %></li>
+                        </div>
+                    <% end %>
+                </ul>
+            <% end %>
             <div class="field mb-5">
                 <%= f.label :title, class: "block text-sm font-medium text-gray-700 mb-1" %>
                 <%= f.text_field :title, class: "block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm" %>
@@ -16,7 +27,14 @@
             </div>
 
             <div class="field mb-5">
-                <%= f.label :price, class: "block text-sm font-medium text-gray-700 mb-1" %>
+                <%= f.label :category, class: "block text-sm font-medium text-gray-700 mb-1" %>
+                <%= f.select :category, options_for_select(@categories.map { |category| [category.title.capitalize, category.slug] }, selected: @category.nil? ? "all" : (@category == "all" ? "all" : @category.slug)), {}, {class: "block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm"} %>
+            </div>
+
+            <div class="field mb-5">
+                <%= f.label :price, class: "block text-sm font-medium text-gray-700 mb-1" do |label| %>
+                    Price in cents
+                <% end %>
                 <%= f.number_field :price, class: "block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm" %>
             </div>
 
@@ -26,15 +44,8 @@
             </div>
 
             <div class="field mb-5">
-                <%= f.label :images, class: "block text-sm font-medium text-gray-700 mb-1" %>
-                <div class="w-full text-sm">
-                    <div class="grid gap-2 mb-2">
-                        <%= f.file_field :stock, class: "" %>
-                        <%= f.file_field :stock, class: "" %>
-                        <%= f.file_field :stock, class: "" %>
-                    </div>
-                    <button><span class="text-green-500"><i class="fas fa-plus"></i></span> Add another image</button>
-                </div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Images (up to 3 images)</label>
+                <%= f.file_field :product_images, multiple: true, class: "text-sm", accept:'image/*' %>
             </div>
 
             <div class="actions">
@@ -43,3 +54,6 @@
         <% end %>
     </div>
 </div>
+
+<%= javascript_pack_tag 'navbar' %>
+<%= javascript_pack_tag 'products_new' %>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get "/:category/products", to: "products#index", as: "products"
   get "/products/new", to: "products#new"
+  post "/products/new", to: "products#create"
   get "/:category/products/:slug", to: "products#show", as: "products_show"
   get "/products/:id", to: "products#show_json"
 

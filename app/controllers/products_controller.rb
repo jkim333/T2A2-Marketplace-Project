@@ -100,6 +100,49 @@ class ProductsController < ApplicationController
     render json: product
   end
 
+  def create
+    begin
+      category = Category.friendly.find(params[:category])
+    rescue ActiveRecord::RecordNotFound
+      flash[:alert_ad] = ["Invalid category was provided"]
+      redirect_to products_new_path
+      return
+    end
+
+    if params[:product_images].nil? || params[:product_images].length > 3
+      flash[:alert_ad] = ["You need to provide between 1 and 3 images."]
+      redirect_to products_new_path
+      return
+    end
+
+    product = Product.new
+    ActiveRecord::Base.transaction do
+      product.title = params[:title]
+      product.description = params[:description]
+      product.price = params[:price].to_i
+      product.stock = params[:stock].to_i
+      product.category_id = category.id
+      product.user_id = current_user.id
+      product.save
+
+      if product.invalid?
+        flash[:alert_ad] = product.errors.full_messages
+        redirect_to products_new_path
+        return
+      end
+
+      params[:product_images].each do |product_image_param|
+        product_image = ProductImage.new
+        product_image.image.attach(product_image_param)
+        product_image.product_id = product.id
+        product_image.save
+      end
+    end
+
+    flash[:success_ad] = "You've listed a new add for a product titled '#{product.title}'"
+    redirect_to profile_ads_path
+  end
+
   private
 
   def get_categories
