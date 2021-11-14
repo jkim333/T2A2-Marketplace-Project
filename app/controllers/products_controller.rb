@@ -139,9 +139,12 @@ class ProductsController < ApplicationController
       end
     end
 
-    flash[:success_ad] = "You've listed a new add for a product titled '#{product.title}'"
+    flash[:success_ad] = "You've listed a new Ad for a product titled '#{product.title}'."
     redirect_to profile_ads_path
   end
+
+  # def delist
+  # end
 
   private
 

@@ -80,13 +80,13 @@
                                         </div>
                                         <div class="flex justify-between items-center">
                                             <div></div>
-                                            <p class="italic text-sm"><%= product.created_at %></p>
+                                            <p class="italic text-sm"><%= product.updated_at %></p>
                                         </div>
                                     </div>
                                 </article>
                             <% end %>
                         <% end %>
-                        <%= will_paginate @posts %>
+                        <%= will_paginate @products %>
                     <% end %>
                 </div>
             </div>

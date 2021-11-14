@@ -20,7 +20,7 @@
                                             <p class="font-medium products-show__price" data-price=<%= "#{@product.price}"%>><%= number_to_currency @product.price/100.0 %></p>
                                         </div>
                                         <p class="text-sm mb-1"><%= @product.user.username %></p>
-                                        <p class="text-xs mb-4"><%= @product.created_at %></p>
+                                        <p class="text-xs mb-4"><%= @product.updated_at %></p>
                                         <p class="text-sm mb-4"><%= @product.description %></p>
                                     </div>
                                     <div class="mb-4 text-sm flex items-center">
@@ -80,7 +80,7 @@
                                         <p class="font-medium"><%= number_to_currency @product.price/100.0 %></p>
                                     </div>
                                     <p class="text-sm mb-1"><%= @product.user.username %></p>
-                                    <p class="text-xs mb-4"><%= @product.created_at %></p>
+                                    <p class="text-xs mb-4"><%= @product.updated_at %></p>
                                     <p class="text-sm mb-4"><%= @product.description %></p>
                                 </div>
                                 <div class="mb-4 text-sm flex items-center">
