@@ -16,6 +16,11 @@
             </div>
         <% end %>
         <div class="grid gap-4">
+            <% if @products.count == 0 %>
+                <article class="p-4 text-gray-900 text-center font-bold col-span-full">
+                    No Ads found
+                </article>
+            <% end %>
             <% @products.each do |product| %>
                 <article class="flex flex-col sm:flex-row bg-white rounded-md p-4 shadow text-gray-900">
                     <div class="w-36 h-36 flex justify-center items-center bg-gray-100">

@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :purchase_histories
   has_many :products
   has_one :bank_detail
+  has_many :purchases, class_name: 'Transaction', foreign_key: 'buyer_id'
+  has_many :sales, class_name: 'Transaction', foreign_key: 'seller_id'
 
   validates :username, presence: { message: "can't be blank" },
             uniqueness: true, length: { maximum: 20 },

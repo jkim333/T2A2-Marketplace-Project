@@ -8,6 +8,7 @@ class Product < ApplicationRecord
   has_many :purchase_histories
   has_many :product_images
   has_many :comments
+  has_many :transactions
 
   validates :title, presence: true
   validates :description, presence: true

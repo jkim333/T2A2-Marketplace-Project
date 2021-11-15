@@ -3,9 +3,11 @@ class ProfileController < ApplicationController
     before_action :authenticate_user!, except: [:cart]
 
     def purchase
+      @purchases = Transaction.where(buyer_id: current_user.id).paginate(page: params[:page])
     end
 
     def sale
+      @sales = Transaction.where(seller_id: current_user.id).paginate(page: params[:page])
     end
 
     def create_transaction
