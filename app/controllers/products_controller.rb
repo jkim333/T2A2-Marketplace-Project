@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action  :get_categories
-  before_action :authenticate_user!, only: [:create, :new]
+  before_action :authenticate_user!, only: [:create, :new, :delist, :relist, :edit]
 
   def index
     category_slug = params[:category]
@@ -12,20 +12,20 @@ class ProductsController < ApplicationController
       @category = 'all'
 
       if min_price && max_price
-        @products = Product.where("price >= ?", min_price).where("price <= ?", max_price).paginate(page: params[:page])
+        @products = Product.where("price >= ?", min_price).where("price <= ?", max_price).where(listed: true).paginate(page: params[:page])
       elsif min_price
-        @products = Product.where("price >= ?", min_price).paginate(page: params[:page])
+        @products = Product.where("price >= ?", min_price).where(listed: true).paginate(page: params[:page])
       elsif max_price
-        @products = Product.where("price <= ?", max_price).paginate(page: params[:page])
+        @products = Product.where("price <= ?", max_price).where(listed: true).paginate(page: params[:page])
       else
-        @products = Product.all.paginate(page: params[:page])
+        @products = Product.where(listed: true).paginate(page: params[:page])
       end
 
       if @search
-        @products = @products.where("title ilike ?", "%#{@search}%").paginate(page: params[:page])
+        @products = @products.where(listed: true).where("title ilike ?", "%#{@search}%").paginate(page: params[:page])
       end
 
-      @category_counts = Product.group(:category_id).count
+      @category_counts = Product.where(listed: true).group(:category_id).count
       @min_price = min_price.nil? ? nil : min_price /100
       @max_price = max_price.nil? ? nil : max_price /100
     else
@@ -38,20 +38,20 @@ class ProductsController < ApplicationController
         @category = category
 
         if min_price && max_price
-          @products = category.products.where("price >= ?", min_price).where("price <= ?", max_price).paginate(page: params[:page])
+          @products = category.products.where("price >= ?", min_price).where("price <= ?", max_price).where(listed: true).paginate(page: params[:page])
         elsif min_price
-          @products = category.products.where("price >= ?", min_price).paginate(page: params[:page])
+          @products = category.products.where("price >= ?", min_price).where(listed: true).paginate(page: params[:page])
         elsif max_price
-          @products = category.products.where("price <= ?", max_price).paginate(page: params[:page])
+          @products = category.products.where("price <= ?", max_price).where(listed: true).paginate(page: params[:page])
         else
-          @products = category.products.paginate(page: params[:page])
+          @products = category.products.where(listed: true).paginate(page: params[:page])
         end
 
         if @search
-          @products = @products.where("title ilike ?", "%#{@search}%").paginate(page: params[:page])
+          @products = @products.where("title ilike ?", "%#{@search}%").where(listed: true).paginate(page: params[:page])
         end
 
-        @category_counts = Product.group(:category_id).count
+        @category_counts = Product.where(listed: true).group(:category_id).count
         @min_price = min_price.nil? ? nil : min_price /100
         @max_price = max_price.nil? ? nil : max_price /100
       end
@@ -65,7 +65,7 @@ class ProductsController < ApplicationController
       @category = 'all'
 
       begin
-        @product = Product.friendly.find(params[:slug])
+        @product = Product.where(listed: true).friendly.find(params[:slug])
       rescue ActiveRecord::RecordNotFound
         @product = nil
         @slug = params[:slug]
@@ -80,7 +80,7 @@ class ProductsController < ApplicationController
         @category = category
 
         begin
-          @product = @category.products.friendly.find(params[:slug])
+          @product = @category.products.where(listed: true).friendly.find(params[:slug])
         rescue ActiveRecord::RecordNotFound
           @product = nil
           @slug = params[:slug]
@@ -93,7 +93,7 @@ class ProductsController < ApplicationController
     id = params[:id].to_i
     
     begin
-      product = Product.find(id)
+      product = Product.where(listed: true).find(id)
       product_image = url_for(product.product_images.first.image)
       product = product.as_json
       product[:image] = product_image
@@ -150,8 +150,37 @@ class ProductsController < ApplicationController
   def new
   end
 
-  # def delist
-  # end
+  def delist
+    product = Product.friendly.find(params[:slug])
+    if product.user == current_user
+      if product.listed
+        product.listed = false
+        product.save
+        flash[:success_ad] = "You've delisted an Ad for a product titled '#{product.title}'."
+      else
+        flash[:alert_ad] = "Your Ad for a product titled '#{product.title}' is already delisted."
+      end
+    else
+      flash[:alert_ad] = "Your do not have permission to delist an Add for a product titled '#{product.title}'."
+    end
+    redirect_to profile_ads_path
+  end
+
+  def relist
+    product = Product.friendly.find(params[:slug])
+    if product.user == current_user
+      if !product.listed
+        product.listed = true
+        product.save
+        flash[:success_ad] = "You've relisted an Ad for a product titled '#{product.title}'."
+      else
+        flash[:alert_ad] = "Your Ad for a product titled '#{product.title}' is already listed."
+      end
+    else
+      flash[:alert_ad] = "Your do not have permission to delist an Add for a product titled '#{product.title}'."
+    end
+    redirect_to profile_ads_path
+  end
 
   private
 

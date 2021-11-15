@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get "/profile/balance", to: "profile#balance"
   get "/profile/cart", to: "profile#cart"
   get "/profile/ads", to: "profile#ads"
+  patch "/products/:slug/delist", to: "products#delist", as: "products_delist"
+  patch "/products/:slug/relist", to: "products#relist", as: "products_relist"
 
   patch "/profile/balance/bank_detail", to: "profile#edit_bank_detail", as: "edit_bank_detail"
   patch "/profile/balance/balance", to: "profile#edit_balance", as: "edit_balance"

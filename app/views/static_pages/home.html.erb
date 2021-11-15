@@ -3,6 +3,11 @@
 
 <div class="px-4 bg-gray-50">
     <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 py-8">
+        <% if @products.count == 0 %>
+            <article class="p-4 text-gray-900 text-center font-bold col-span-full">
+                No products found
+            </article>
+        <% end %>
         <% @products.each do |product| %>
             <%= link_to products_show_path(category: "all", slug: product.slug) do %>
                 <article class="bg-white rounded-sm p-2 shadow text-gray-900 hover:shadow-lg transform hover:-translate-y-0.5 duration-300 ease-in-out">
