@@ -2,7 +2,9 @@
     <div class="flex flex-col md:flex-row md:justify-between container">
         <div class="flex flex-col md:flex-row md:justify-between">
             <div class="flex justify-between items-center">
-                <%= link_to "Chango", root_path, class: "my-2 font-medium text-white px-3 py-2 bg-green-500", style: "border-radius: 50%;" %>
+                <%= link_to root_path, style: "display: block;" do %>
+                    <%= image_tag "logo.png", style: "height: 10px;", class: "px-3 py-2" %>
+                <% end %>
                 <button class="w-8 h-8 md:hidden text-xl text-gray-700 hover:bg-white transition ease-in-out duration-150 rounded-md" id="navbar__btn"><i class="fas fa-bars"></i></button>
             </div>
             <ul class="hidden md:flex flex-col md:flex-row text-sm font-medium md:ml-5" id="navbar__menu1">
@@ -87,6 +89,12 @@
                     </ul>
                 </div>
             <% else %>
+                <li class="flex items-center px-1" style="height: 56px;">
+                    <%= link_to profile_cart_path, class: "text-2xl py-1 px-1.5 hover:bg-white text-gray-700 transition ease-in-out duration-150 rounded-md relative" do %>
+                        <i class="fas fa-shopping-cart"></i>
+                        <div class="absolute top-0 right-0 text-xs bg-white flex justify-center items-center rounded-full w-5 h-5 text-green-500 font-medium" id="navbar__cart"></div>
+                    <% end %>
+                </li>
                 <li class="text-gray-700 text-sm font-medium hover:bg-white transition ease-in-out duration-150 rounded-md md:rounded-none"><%= link_to "Sign in", new_user_session_path, class: "block p-5 leading-4", style: "height: 56px;" %></li>
                 <li class="text-gray-700 text-sm font-medium hover:bg-white transition ease-in-out duration-150 rounded-md md:rounded-none"><%= link_to "Register", new_user_registration_path, class: "block p-5 leading-4", style: "height: 56px;" %></li>
             <% end %>

@@ -18,4 +18,9 @@ Rails.application.routes.draw do
   patch "/profile/balance/balance", to: "profile#edit_balance", as: "edit_balance"
 
   post "/profile/transaction", to: "profile#create_transaction", as: "create_transaction"
+
+  post "/comments/new", to: "comments#new"
+  delete "/comments/:id/delete", to: "comments#delete", as: "comments_delete"
+  post "/comments/:id/reply/new", to: "comments#reply_new", as: "comments_reply_new"
+  delete "/comments/:id/reply/delete", to: "comments#reply_delete", as: "comments_reply_delete"
 end

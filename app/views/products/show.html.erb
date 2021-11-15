@@ -78,21 +78,98 @@
                         </div>
                         <div class="bg-white rounded p-4 shadow text-gray-900">
                             <h2 class="text-xl font-extrabold text-gray-900 mb-4">Comments</h2>
-                            <div class="border-b py-4">
-                                <h3 class="font-bold mb-1">Username</h3>
-                                <p class="text-xs mb-1">04/11/2021 11:00:00AM</p>
-                                <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel massa sed leo rutrum lobortis sit amet in ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Praesent vulputate, arcu et mollis aliquet, sapien magna dictum ante, in scelerisque nisl magna non risus. Donec mattis nibh et elementum tincidunt.</p>
-                            </div>
-                            <div class="border-b py-4">
-                                <h3 class="font-bold mb-1">Username</h3>
-                                <p class="text-xs mb-1">04/11/2021 11:00:00AM</p>
-                                <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel massa sed leo rutrum lobortis sit amet in ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Praesent vulputate, arcu et mollis aliquet, sapien magna dictum ante, in scelerisque nisl magna non risus. Donec mattis nibh et elementum tincidunt.</p>
-                            </div>
-                            <%= form_with class: "w-full mt-4" do |f| %>
-                                <div class="field mb-2">
-                                    <%= f.text_area :description, class: "block w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm", rows: 3 %>
+                            <% if @product.comments.count > 0 %>
+                                <% @product.comments.each do |comment| %>
+                                    <% if comment.parent_comment.nil? %>
+                                        <div class="border-b py-4">
+                                            <h3 class="font-bold mb-1"><%= comment.user.username %></h3>
+                                            <p class="text-xs mb-1"><%= comment.updated_at %></p>
+                                            <p class="text-sm"><%= comment.comment %></p>
+                                            <div class="flex">
+                                                <div class="mr-2">
+                                                    <button class="text-xs text-gray-500 mt-4 hover:underline reply-btn" data-comment_id="<%= comment.id %>">Reply</button>
+                                                </div>
+                                                <% if comment.user === current_user %>
+                                                    <%= form_with url: comments_delete_path(comment), method: :delete do |f| %>
+                                                        <%= f.hidden_field :slug, value: @product.slug  %>
+                                                        <button class="text-xs text-gray-500 mt-4 hover:underline">Delete</button>
+                                                    <% end %>
+                                                <% end %>
+                                            </div>
+                                            <div class="ml-12">
+                                                <% if comment.child_comments.count > 0 %>
+                                                    <% comment.child_comments.each do |child_comment| %>
+                                                        <div class="border-b py-4">
+                                                            <h3 class="font-bold mb-1"><%= child_comment.user.username %></h3>
+                                                            <p class="text-xs mb-1"><%= child_comment.updated_at %></p>
+                                                            <p class="text-sm"><%= child_comment.comment %></p>
+                                                            <% if child_comment.user === current_user %>
+                                                                <%= form_with url: comments_reply_delete_path(child_comment), method: :delete do |f| %>
+                                                                    <%= f.hidden_field :slug, value: @product.slug  %>
+                                                                    <button class="text-xs text-gray-500 mt-4 hover:underline">Delete</button>
+                                                                <% end %>
+                                                            <% end %>
+                                                        </div>
+                                                    <% end %>
+                                                <% end %>
+                                                <% if flash["success_reply_#{comment.id}".to_sym] %>
+                                                    <div class="rounded-md bg-green-200 p-4 mt-3 text-gray-900 px-5 text-sm">
+                                                        <%= flash["success_reply_#{comment.id}".to_sym] %>
+                                                    </div>
+                                                <% end %>
+                                                <% if flash["alert_reply_#{comment.id}".to_sym] %>
+                                                    <ul class="rounded-md bg-red-400 p-4 mt-3 text-white">
+                                                        <% flash["alert_reply_#{comment.id}".to_sym].each do |message| %>
+                                                            <div class="px-5 text-sm">
+                                                                <li class="list-disc"><%= message %></li>
+                                                            </div>
+                                                        <% end %>
+                                                    </ul>
+                                                <% end %>
+                                                <div class="hidden reply-form-<%= comment.id %>">
+                                                    <%= form_with url: comments_reply_new_path(id: comment.id), method: :post, class: "w-full mt-4" do |f| %>
+                                                        <%= f.hidden_field :slug, value: @product.slug  %>
+                                                        <div class="field mb-2">
+                                                            <%= f.text_area :comment, class: "block w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm", rows: 3, placeholder: "Write your reply here." %>
+                                                        </div>
+                                                        <%= f.submit "Submit Reply", class: "w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded text-white bg-green-500 hover:bg-green-400 focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-pointer" %>
+                                                    <% end %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <% end %>
+                                <% end %>
+                            <% else %>
+                                <div class="border-b py-4">
+                                    No comments found
                                 </div>
-                                <%= f.submit "Submit Comment", class: "w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded text-white bg-green-500 hover:bg-green-400 focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-pointer" %>
+                            <% end %>
+                            <% if user_signed_in? %>
+                                <%= form_with url: comments_new_path, method: :post, class: "w-full mt-4" do |f| %>
+                                    <%= f.hidden_field :slug, value: @product.slug  %>
+                                    <% if flash[:success_comment] %>
+                                        <div class="rounded-md bg-green-200 p-4 mb-3 text-gray-900 px-5 text-sm">
+                                            <%= flash[:success_comment] %>
+                                        </div>
+                                    <% end %>
+                                    <% if flash[:alert_comment] %>
+                                        <ul class="rounded-md bg-red-400 p-4 mb-3 text-white">
+                                            <% flash[:alert_comment].each do |message| %>
+                                                <div class="px-5 text-sm">
+                                                    <li class="list-disc"><%= message %></li>
+                                                </div>
+                                            <% end %>
+                                        </ul>
+                                    <% end %>
+                                    <div class="field mb-2">
+                                        <%= f.text_area :comment, class: "block w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm", rows: 3, placeholder: "Write your comment here." %>
+                                    </div>
+                                    <%= f.submit "Submit Comment", class: "w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded text-white bg-green-500 hover:bg-green-400 focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-pointer" %>
+                                <% end %>
+                            <% else %>
+                                <div class="text-center text-sm mt-4 p-4 bg-blue-100 rounded border-2 border-blue-200 text-blue-900">
+                                    Please <%= link_to "sign in", new_user_session_path, class: "font-bold hover:underline" %> to write comments.
+                                </div>
                             <% end %>
                         </div>
                     </div>

@@ -1,5 +1,6 @@
 class ProfileController < ApplicationController
     before_action  :get_categories
+    before_action :authenticate_user!, except: [:cart]
 
     def purchase
     end
@@ -63,6 +64,9 @@ class ProfileController < ApplicationController
 
     def ads
       @products = Product.where("user_id = '#{current_user.id}'").paginate(page: params[:page])
+    end
+
+    def cart
     end
 
     private

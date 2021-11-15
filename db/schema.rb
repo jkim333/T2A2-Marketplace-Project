@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_14_022703) do
+ActiveRecord::Schema.define(version: 2021_11_14_225238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,18 @@ ActiveRecord::Schema.define(version: 2021_11_14_022703) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
     t.index ["slug"], name: "index_categories_on_slug", unique: true
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "comment"
+    t.bigint "user_id", null: false
+    t.bigint "product_id", null: false
+    t.bigint "parent_comment_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["parent_comment_id"], name: "index_comments_on_parent_comment_id"
+    t.index ["product_id"], name: "index_comments_on_product_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -136,6 +148,9 @@ ActiveRecord::Schema.define(version: 2021_11_14_022703) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bank_details", "users"
+  add_foreign_key "comments", "comments", column: "parent_comment_id"
+  add_foreign_key "comments", "products"
+  add_foreign_key "comments", "users"
   add_foreign_key "product_images", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "users"

@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action  :get_categories
+  before_action :authenticate_user!, only: [:create, :new]
 
   def index
     category_slug = params[:category]
@@ -144,6 +145,9 @@ class ProductsController < ApplicationController
 
     flash[:success_ad] = "You've listed a new Ad for a product titled '#{product.title}'."
     redirect_to profile_ads_path
+  end
+
+  def new
   end
 
   # def delist

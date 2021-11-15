@@ -153,3 +153,13 @@ addToCartBtns.forEach((btn) => {
     }, 2000);
   });
 });
+
+const replyBtns = document.querySelectorAll(".reply-btn");
+replyBtns.forEach((replyBtn) => {
+  replyBtn.addEventListener("click", (e) => {
+    const replyForm = document.querySelector(
+      `.reply-form-${e.target.dataset.comment_id}`
+    );
+    replyForm.classList.toggle("hidden");
+  });
+});
