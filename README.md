@@ -92,57 +92,57 @@ The following is a list of technologies used:
 
 ### **Home page**
 
-![Screenshot of home page (desktop view)](./docs/home-desktop.png)
-![Screenshot of home page (tablet view)](./docs/home-tablet.png)
-![Screenshot of home page (mobile view)](./docs/home-mobile.png)
+![Screenshot of home page (desktop view)](./docs/Home-desktop.png)
+![Screenshot of home page (tablet view)](./docs/Home-tablet.png)
+![Screenshot of home page (mobile view)](./docs/Home-mobile.png)
 
 <br/>
 
 ### **Products page**
 
-![Screenshot of products page (desktop view)](./docs/products-desktop.png)
-![Screenshot of products page (tablet view)](./docs/products-tablet.png)
-![Screenshot of products page (mobile view)](./docs/products-mobile.png)
+![Screenshot of products page (desktop view)](./docs/Products-desktop.png)
+![Screenshot of products page (tablet view)](./docs/Products-tablet.png)
+![Screenshot of products page (mobile view)](./docs/Products-mobile.png)
 
 <br/>
 
 ### **Individual product page**
 
-![Screenshot of individual product page (desktop view)](./docs/individual-product-desktop.png)
-![Screenshot of individual product page (tablet view)](./docs/individual-product-tablet.png)
-![Screenshot of individual product page (mobile view)](./docs/individual-product-mobile.png)
+![Screenshot of individual product page (desktop view)](./docs/Individual-product-desktop.png)
+![Screenshot of individual product page (tablet view)](./docs/Individual-product-tablet.png)
+![Screenshot of individual product page (mobile view)](./docs/Individual-product-mobile.png)
 
 <br/>
 
 ### **Sign in page**
 
-![Screenshot of sign in page (desktop view)](./docs/sign-in-desktop.png)
-![Screenshot of sign in page (tablet view)](./docs/sign-in-tablet.png)
-![Screenshot of sign in page (mobile view)](./docs/sign-in-mobile.png)
+![Screenshot of sign in page (desktop view)](./docs/Sign-in-desktop.png)
+![Screenshot of sign in page (tablet view)](./docs/Sign-in-tablet.png)
+![Screenshot of sign in page (mobile view)](./docs/Sign-in-mobile.png)
 
 <br/>
 
 ### **Registration page**
 
-![Screenshot of registration page (desktop view)](./docs/register-desktop.png)
-![Screenshot of registration page (tablet view)](./docs/register-tablet.png)
-![Screenshot of registration page (mobile view)](./docs/register-mobile.png)
+![Screenshot of registration page (desktop view)](./docs/Register-desktop.png)
+![Screenshot of registration page (tablet view)](./docs/Register-tablet.png)
+![Screenshot of registration page (mobile view)](./docs/Register-mobile.png)
 
 <br/>
 
 ### **My balance page**
 
-![Screenshot of my balance page (desktop view)](./docs/my-balance-desktop.png)
-![Screenshot of my balance page (tablet view)](./docs/my-balance-tablet.png)
-![Screenshot of my balance page (mobile view)](./docs/my-balance-mobile.png)
+![Screenshot of my balance page (desktop view)](./docs/My-balance-desktop.png)
+![Screenshot of my balance page (tablet view)](./docs/My-balance-tablet.png)
+![Screenshot of my balance page (mobile view)](./docs/My-balance-mobile.png)
 
 <br/>
 
 ### **Post an Ad page**
 
-![Screenshot of post an ad page (desktop view)](./docs/post-an-ad-desktop.png)
-![Screenshot of post an ad page (tablet view)](./docs/post-an-ad-tablet.png)
-![Screenshot of post an ad page (mobile view)](./docs/post-an-ad-mobile.png)
+![Screenshot of post an ad page (desktop view)](./docs/Post-an-Ad-desktop.png)
+![Screenshot of post an ad page (tablet view)](./docs/Post-an-Ad-tablet.png)
+![Screenshot of post an ad page (mobile view)](./docs/Post-an-Ad-mobile.png)
 
 <br/>
 
