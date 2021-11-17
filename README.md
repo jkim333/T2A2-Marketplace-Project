@@ -13,6 +13,34 @@ The purpose of this app is to allow users to buy or sell second-hand products on
 
 <br/>
 
+## Getting started
+
+To get started with the app, clone the repo and then install the needed gems:
+
+```
+$ bundle install
+```
+
+Migrate the database:
+
+```
+$ rails db:migrate
+```
+
+Next, run the seed file:
+
+```
+$ rails db:seed
+```
+
+Run the app in a local server:
+
+```
+$ rails server
+```
+
+<br/>
+
 ### **Functionality / features**
 
 The following is a list of key features used:
@@ -35,13 +63,13 @@ The following is a list of key features used:
 
 ### **Screenshots**
 
-![screenshot-1](./docs/screenshot-1.png)
-![screenshot-2](./docs/screenshot-2.png)
-![screenshot-3](./docs/screenshot-3.png)
-![screenshot-4](./docs/screenshot-4.png)
-![screenshot-5](./docs/screenshot-5.png)
-![screenshot-6](./docs/screenshot-6.png)
-![screenshot-7](./docs/screenshot-7.png)
+![screenshot-1](./docs/screenshot-1.PNG)
+![screenshot-2](./docs/screenshot-2.PNG)
+![screenshot-3](./docs/screenshot-3.PNG)
+![screenshot-4](./docs/screenshot-4.PNG)
+![screenshot-5](./docs/screenshot-5.PNG)
+![screenshot-6](./docs/screenshot-6.PNG)
+![screenshot-7](./docs/screenshot-7.PNG)
 
 <br/>
 
