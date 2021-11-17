@@ -4,10 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :sale_histories
-  has_many :purchase_histories
   has_many :products
   has_one :bank_detail
+  accepts_nested_attributes_for :bank_detail
   has_many :purchases, class_name: 'Transaction', foreign_key: 'buyer_id'
   has_many :sales, class_name: 'Transaction', foreign_key: 'seller_id'
 

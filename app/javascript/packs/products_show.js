@@ -166,4 +166,43 @@ try {
       replyForm.classList.toggle("hidden");
     });
   });
+
+  const buyNowBtns = document.querySelectorAll(".buy-now");
+  buyNowBtns.forEach((buyNowBtn) => {
+    buyNowBtn.addEventListener("click", (e) => {
+      const productId = Number(document.getElementById("product_id").value);
+      const quantity = Number(
+        document.getElementById("products-show__quantity1").value
+      );
+      const price = Number(
+        document.querySelector(".products-show__price").dataset.price
+      );
+
+      if (sessionStorage.getItem("cartItems")) {
+        const cartItems = JSON.parse(sessionStorage.getItem("cartItems"));
+        const found = cartItems.find((item) => item.productId == productId);
+
+        if (found) {
+          found.quantity = quantity;
+        } else {
+          cartItems.push({
+            productId: productId,
+            quantity: quantity,
+            price: price,
+          });
+          navbarCart.textContent = cartItems.length;
+        }
+
+        sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
+      } else {
+        const cartItems = [
+          { productId: productId, quantity: quantity, price: price },
+        ];
+        sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
+        navbarCart.textContent = 1;
+      }
+
+      window.location.replace("/profile/cart");
+    });
+  });
 } catch (err) {}

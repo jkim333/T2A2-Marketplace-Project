@@ -25,4 +25,6 @@ Rails.application.routes.draw do
   delete "/comments/:id/delete", to: "comments#delete", as: "comments_delete"
   post "/comments/:id/reply/new", to: "comments#reply_new", as: "comments_reply_new"
   delete "/comments/:id/reply/delete", to: "comments#reply_delete", as: "comments_reply_delete"
+
+  post "/transactions/create", to: "transactions#create"
 end

@@ -7,6 +7,12 @@
     <%= form_for(resource, as: resource_name, html: {class: "bg-white py-8 px-10 shadow rounded-lg my-8 max-w-md w-full"}, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
+      <%= f.fields_for :bank_detail, resource.build_bank_detail do |bank_detail_form| %>
+        <%= bank_detail_form.hidden_field :name, value: "-" %>
+        <%= bank_detail_form.hidden_field :account_number, value: "-" %>
+        <%= bank_detail_form.hidden_field :bsb, value: "-" %>
+      <% end %>
+
       <div class="field mb-5">
         <%= f.label :email, class: "block text-sm font-medium text-gray-700 mb-1" %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm" %>

@@ -6,12 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user1 = User.create(email: "test1@test.com", username: "test1", password: "password", password_confirmation: "password")
-user2 = User.create(email: "test2@test.com", username: "test2", password: "password", password_confirmation: "password")
-
 category1 = Category.create(title: "Furniture")
 category2 = Category.create(title: "Clothes")
-category3 = Category.create(title: "Cars")
 category4 = Category.create(title: "Garden")
 
 # category1_product1 = Product.create(title: "furniture1", description: "desc", price: 100, stock: 3, listed: true, category_id: category1.id, user_id: user1.id)

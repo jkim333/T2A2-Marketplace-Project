@@ -5,6 +5,15 @@ var formatter = new Intl.NumberFormat("en-US", {
   currency: "USD",
 });
 
+function setHiddenCheckoutForm() {
+  const cartItemsString = sessionStorage.getItem("cartItems");
+  const cartItemsHidden = document.querySelectorAll(".cart_items_hidden");
+  cartItemsHidden.forEach((item) => {
+    item.value = cartItemsString;
+  });
+}
+setHiddenCheckoutForm();
+
 const cartItems = JSON.parse(sessionStorage.getItem("cartItems"));
 const cartItemsContainer = document.getElementById(
   "profile-cart__cart-items-container"
@@ -83,6 +92,7 @@ if (cartItems && cartItems.length > 0) {
             );
             cartItem.quantity = Number(e.target.value);
             sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
+            setHiddenCheckoutForm();
             updateSubTotal();
           });
         article
@@ -94,6 +104,7 @@ if (cartItems && cartItems.length > 0) {
             );
             cartItem.quantity = Number(e.target.value);
             sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
+            setHiddenCheckoutForm();
             updateSubTotal();
           });
         article
@@ -105,6 +116,7 @@ if (cartItems && cartItems.length > 0) {
             );
             cartItem.quantity = Number(e.target.value);
             sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
+            setHiddenCheckoutForm();
             updateSubTotal();
 
             if (Number(e.target.value) < 1) {
@@ -128,6 +140,7 @@ if (cartItems && cartItems.length > 0) {
             "cartItems",
             JSON.stringify(filteredCartItems)
           );
+          setHiddenCheckoutForm();
           article.remove();
           const navbarCart = document.getElementById("navbar__cart");
           navbarCart.textContent = filteredCartItems.length;
@@ -212,7 +225,8 @@ checkoutBtns.forEach((btn) => {
       }
     });
     if (proceedCheckout) {
-      alert("CHECKOUT PROCEEDING!");
+      sessionStorage.removeItem("cartItems");
+      document.getElementById("checkout-submit-btn").click();
     }
   });
 });

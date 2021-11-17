@@ -5,14 +5,14 @@
     <%= render "profile/shared/side_navbar" %>
     <div class="md:col-span-5 col-span-full">
         <h1 class="text-3xl font-extrabold text-gray-900 text-center mb-8">Purchase history</h1>
-        <% if flash[:success_ad] %>
+        <% if flash[:success_purchase] %>
             <div class="rounded-md bg-green-200 p-4 mb-3 text-gray-900 px-5 text-sm">
-                <%= flash[:success_ad] %>
+                <%= flash[:success_purchase] %>
             </div>
         <% end %>
-        <% if flash[:alert_ad] %>
+        <% if flash[:alert_purchase] %>
             <div class="rounded-md bg-red-400 p-4 mb-3 text-white px-5 text-sm">
-                <%= flash[:alert_ad] %>
+                <%= flash[:alert_purchase] %>
             </div>
         <% end %>
         <div class="grid gap-4">

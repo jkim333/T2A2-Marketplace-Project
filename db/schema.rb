@@ -44,9 +44,9 @@ ActiveRecord::Schema.define(version: 2021_11_15_112303) do
   end
 
   create_table "bank_details", force: :cascade do |t|
-    t.string "name", default: ""
-    t.string "account_number", default: ""
-    t.string "bsb", default: ""
+    t.string "name"
+    t.string "account_number"
+    t.string "bsb"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -109,28 +109,6 @@ ActiveRecord::Schema.define(version: 2021_11_15_112303) do
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
-  create_table "purchase_histories", force: :cascade do |t|
-    t.integer "quantity"
-    t.integer "price"
-    t.bigint "user_id", null: false
-    t.bigint "product_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["product_id"], name: "index_purchase_histories_on_product_id"
-    t.index ["user_id"], name: "index_purchase_histories_on_user_id"
-  end
-
-  create_table "sale_histories", force: :cascade do |t|
-    t.integer "quantity"
-    t.integer "price"
-    t.bigint "user_id", null: false
-    t.bigint "product_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["product_id"], name: "index_sale_histories_on_product_id"
-    t.index ["user_id"], name: "index_sale_histories_on_user_id"
-  end
-
   create_table "transactions", force: :cascade do |t|
     t.bigint "seller_id", null: false
     t.bigint "buyer_id", null: false
@@ -167,10 +145,6 @@ ActiveRecord::Schema.define(version: 2021_11_15_112303) do
   add_foreign_key "product_images", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "users"
-  add_foreign_key "purchase_histories", "products"
-  add_foreign_key "purchase_histories", "users"
-  add_foreign_key "sale_histories", "products"
-  add_foreign_key "sale_histories", "users"
   add_foreign_key "transactions", "products"
   add_foreign_key "transactions", "users", column: "buyer_id"
   add_foreign_key "transactions", "users", column: "seller_id"

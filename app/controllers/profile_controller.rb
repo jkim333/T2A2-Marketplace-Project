@@ -10,11 +10,6 @@ class ProfileController < ApplicationController
       @sales = Transaction.where(seller_id: current_user.id).paginate(page: params[:page])
     end
 
-    def create_transaction
-      # CREATE CHECKOUT and create purchase and sale history
-      p "TODO"
-    end
-
     def balance(bank_detail=nil)
       if bank_detail.nil?
         @bank_detail = current_user.bank_detail

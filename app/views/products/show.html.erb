@@ -59,18 +59,22 @@
                                         <% end %>
                                     </div>
                                     <div>
-                                        <% if @product.stock > 0 %>
-                                            <button type="button" class="w-full flex justify-center py-2 px-4 mb-2 border-2 border-transparent text-sm font-medium rounded text-white bg-green-500 hover:bg-green-400 focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-pointer add-to-cart">Add to cart</button>
-                                            <%= form.submit "Buy now", class: "w-full flex justify-center py-2 px-4 border-2 border-green-500 text-sm font-medium rounded text-green-500 hover:text-white hover:bg-green-500 bg-transparent focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-pointer" %>
-                                            <div class="w-48 mx-auto">
-                                                <%= image_tag "3_Card_color_horizontal.svg" %>
-                                            </div>
-                                        <% else %>
-                                            <button class="w-full flex justify-center py-2 px-4 mb-2 border-2 border-transparent text-sm font-medium rounded text-white bg-green-500 hover:bg-green-400 focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-not-allowed opacity-50" disabled>Add to cart</button>
-                                            <button class="w-full flex justify-center py-2 px-4 border-2 border-green-500 text-sm font-medium rounded text-green-500 hover:text-white hover:bg-green-500 bg-transparent focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-not-allowed opacity-50" disabled>Buy now</button>
-                                            <div class="w-48 mx-auto">
-                                                <%= image_tag "3_Card_color_horizontal.svg" %>
-                                            </div>
+                                        <% if @product.user != current_user %>
+                                            <% if @product.stock > 0 %>
+                                                <button type="button" class="w-full flex justify-center py-2 px-4 mb-2 border-2 border-transparent text-sm font-medium rounded text-white bg-green-500 hover:bg-green-400 focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-pointer add-to-cart">Add to cart</button>
+                                                <button type="button" class="w-full flex justify-center py-2 px-4 border-2 border-green-500 text-sm font-medium rounded text-green-500 hover:text-white hover:bg-green-500 bg-transparent focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-pointer buy-now">
+                                                    Buy now
+                                                </button>
+                                                <div class="w-48 mx-auto">
+                                                    <%= image_tag "3_Card_color_horizontal.svg" %>
+                                                </div>
+                                            <% else %>
+                                                <button class="w-full flex justify-center py-2 px-4 mb-2 border-2 border-transparent text-sm font-medium rounded text-white bg-green-500 hover:bg-green-400 focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-not-allowed opacity-50" disabled>Add to cart</button>
+                                                <button class="w-full flex justify-center py-2 px-4 border-2 border-green-500 text-sm font-medium rounded text-green-500 hover:text-white hover:bg-green-500 bg-transparent focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-not-allowed opacity-50" disabled>Buy now</button>
+                                                <div class="w-48 mx-auto">
+                                                    <%= image_tag "3_Card_color_horizontal.svg" %>
+                                                </div>
+                                            <% end %>
                                         <% end %>
                                     </div>
                                 </div>
@@ -196,18 +200,22 @@
                                     <% end %>
                                 </div>
                                 <div>
-                                    <% if @product.stock > 0 %>
-                                        <button type="button" class="w-full flex justify-center py-2 px-4 mb-2 border-2 border-transparent text-sm font-medium rounded text-white bg-green-500 hover:bg-green-400 focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-pointer add-to-cart">Add to cart</button>
-                                        <%= form.submit "Buy now", class: "w-full flex justify-center py-2 px-4 border-2 border-green-500 text-sm font-medium rounded text-green-500 hover:text-white hover:bg-green-500 bg-transparent focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-pointer" %>
-                                        <div class="w-48 mx-auto">
-                                            <%= image_tag "3_Card_color_horizontal.svg" %>
-                                        </div>
-                                    <% else %>
-                                        <button class="w-full flex justify-center py-2 px-4 mb-2 border-2 border-transparent text-sm font-medium rounded text-white bg-green-500 hover:bg-green-400 focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-not-allowed opacity-50" disabled>Add to cart</button>
-                                        <button class="w-full flex justify-center py-2 px-4 border-2 border-green-500 text-sm font-medium rounded text-green-500 hover:text-white hover:bg-green-500 bg-transparent focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-not-allowed opacity-50" disabled>Buy now</button>
-                                        <div class="w-48 mx-auto">
-                                            <%= image_tag "3_Card_color_horizontal.svg" %>
-                                        </div>
+                                    <% if @product.user != current_user %>
+                                        <% if @product.stock > 0 %>
+                                            <button type="button" class="w-full flex justify-center py-2 px-4 mb-2 border-2 border-transparent text-sm font-medium rounded text-white bg-green-500 hover:bg-green-400 focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-pointer add-to-cart">Add to cart</button>
+                                            <button type="button" class="w-full flex justify-center py-2 px-4 border-2 border-green-500 text-sm font-medium rounded text-green-500 hover:text-white hover:bg-green-500 bg-transparent focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-pointer buy-now">
+                                                Buy now
+                                            </button>
+                                            <div class="w-48 mx-auto">
+                                                <%= image_tag "3_Card_color_horizontal.svg" %>
+                                            </div>
+                                        <% else %>
+                                            <button class="w-full flex justify-center py-2 px-4 mb-2 border-2 border-transparent text-sm font-medium rounded text-white bg-green-500 hover:bg-green-400 focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-not-allowed opacity-50" disabled>Add to cart</button>
+                                            <button class="w-full flex justify-center py-2 px-4 border-2 border-green-500 text-sm font-medium rounded text-green-500 hover:text-white hover:bg-green-500 bg-transparent focus:outline-none focus:border-green-500 focus:shadow-outline-green transition duration-150 ease-in-out cursor-not-allowed opacity-50" disabled>Buy now</button>
+                                            <div class="w-48 mx-auto">
+                                                <%= image_tag "3_Card_color_horizontal.svg" %>
+                                            </div>
+                                        <% end %>
                                     <% end %>
                                 </div>
                             </div>

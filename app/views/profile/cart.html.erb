@@ -58,7 +58,11 @@
                             </div>
                         </div>
                         <div>
-                            <button class="w-full flex justify-center py-2 px-4 border-2 border-transparent text-sm font-medium rounded text-white bg-green-500 hover:bg-green-400 focus:outline-none focus:border-green-500 focus:shadow-outline-indigo transition duration-150 ease-in-out cursor-pointer mt-2 profile-cart__checkout">Checkout</button>
+                            <%= form_with url: transactions_create_path, method: :post do |form| %>
+                                <%= form.hidden_field :cartItems, value: "", class: "cart_items_hidden" %>
+                                <button class="w-full flex justify-center py-2 px-4 border-2 border-transparent text-sm font-medium rounded text-white bg-green-500 hover:bg-green-400 focus:outline-none focus:border-green-500 focus:shadow-outline-indigo transition duration-150 ease-in-out cursor-pointer mt-2 profile-cart__checkout" type="button">Checkout</button>
+                                <%= form.submit "", class: "hidden", id: "checkout-submit-btn" %>
+                            <% end %>
                             <div class="w-48 mx-auto">
                                 <%= image_tag "3_Card_color_horizontal.svg" %>
                             </div>
