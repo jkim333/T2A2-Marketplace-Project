@@ -1,5 +1,4 @@
 import Splide from "@splidejs/splide";
-import "@splidejs/splide/dist/css/splide.min.css";
 
 try {
   const main = new Splide("#main-slider", {
