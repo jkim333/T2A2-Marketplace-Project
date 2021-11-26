@@ -7,37 +7,19 @@
 
 <br/>
 
-## Purpose
+## Problem
 
-The purpose of this app is to allow users to buy or sell second-hand products online. This app helps to reduce waste by allowing sellers to sell their items that are no longer needed by them to buyers and buyers to acquire these items second hand instead of buying them new unnecessarily.
+Items that are no longer needed are typically just thrown out and they end up in the waste. Waste is not good for the environment, especially when these items could still be used by others instead of ending up in the waste.
+
+Instead of letting these items go to the waste, this app allows people to sell their products to other buyers. That way, a seller can make money through the transaction, and a buyer can acquire the product they need. All in all, this app prevents items going to the waste from the seller's perspective, and prevents unnecessary purchase of new items from the buyer's perspective, leading to the reduction in the impact to the environment.
 
 <br/>
 
-## Getting started
+## Description
 
-To get started with the app, clone the repo and then install the needed gems:
+### **Purpose**
 
-```
-$ bundle install
-```
-
-Migrate the database:
-
-```
-$ rails db:migrate
-```
-
-Next, run the seed file:
-
-```
-$ rails db:seed
-```
-
-Run the app in a local server:
-
-```
-$ rails server
-```
+The purpose of this app is to allow users to buy or sell second-hand products online. This app helps to reduce waste by allowing sellers to sell items that are no longer needed by them and buyers to acquire these items second hand instead of buying them new unnecessarily.
 
 <br/>
 
@@ -63,13 +45,19 @@ The following is a list of key features used:
 
 ### **Screenshots**
 
-![screenshot-1](./docs/screenshot-1.PNG)
-![screenshot-2](./docs/screenshot-2.PNG)
-![screenshot-3](./docs/screenshot-3.PNG)
-![screenshot-4](./docs/screenshot-4.PNG)
-![screenshot-5](./docs/screenshot-5.PNG)
-![screenshot-6](./docs/screenshot-6.PNG)
-![screenshot-7](./docs/screenshot-7.PNG)
+![screenshot-1](./docs/screenshot-1.png)
+![screenshot-2](./docs/screenshot-2.png)
+![screenshot-3](./docs/screenshot-3.png)
+![screenshot-4](./docs/screenshot-4.png)
+![screenshot-5](./docs/screenshot-5.png)
+![screenshot-6](./docs/screenshot-6.png)
+![screenshot-7](./docs/screenshot-7.png)
+
+<br/>
+
+### **Target audience**
+
+The target audience is anyone that wants to sell their products to others and make money instead of throwing their products out to the waste.
 
 <br/>
 
@@ -88,61 +76,75 @@ The following is a list of technologies used:
 
 <br/>
 
+## User stories
+
+Below is a link to the trello dashboard:
+https://trello.com/b/DyRHwLAI/t2a2
+
+Tasks are allocated into the "To Do", "Doing" and "Done" columns. Tasks that need to start are first allocated into the "To Do" column. When I start working on the task, I would move the task to the "Doing" column. After completing the task and committing the changes in git, I would then move that task to the "Done" column to signal that the task is completed.
+
+![Trello_2021_11_8](./docs/Trello_2021_11_8.png)
+![Trello_2021_11_10](./docs/Trello_2021_11_10.png)
+![Trello_2021_11_17](./docs/Trello_2021_11_17.png)
+![Trello_2021_11_18](./docs/Trello_2021_11_18.png)
+
+<br/>
+
 ## Wireframes
 
 ### **Home page**
 
-![Screenshot of home page (desktop view)](./docs/Home-desktop.png)
-![Screenshot of home page (tablet view)](./docs/Home-tablet.png)
-![Screenshot of home page (mobile view)](./docs/Home-mobile.png)
+![Screenshot of home page (desktop view)](./docs/home-desktop.png)
+![Screenshot of home page (tablet view)](./docs/home-tablet.png)
+![Screenshot of home page (mobile view)](./docs/home-mobile.png)
 
 <br/>
 
 ### **Products page**
 
-![Screenshot of products page (desktop view)](./docs/Products-desktop.png)
-![Screenshot of products page (tablet view)](./docs/Products-tablet.png)
-![Screenshot of products page (mobile view)](./docs/Products-mobile.png)
+![Screenshot of products page (desktop view)](./docs/products-desktop.png)
+![Screenshot of products page (tablet view)](./docs/products-tablet.png)
+![Screenshot of products page (mobile view)](./docs/products-mobile.png)
 
 <br/>
 
 ### **Individual product page**
 
-![Screenshot of individual product page (desktop view)](./docs/Individual-product-desktop.png)
-![Screenshot of individual product page (tablet view)](./docs/Individual-product-tablet.png)
-![Screenshot of individual product page (mobile view)](./docs/Individual-product-mobile.png)
+![Screenshot of individual product page (desktop view)](./docs/individual-product-desktop.png)
+![Screenshot of individual product page (tablet view)](./docs/individual-product-tablet.png)
+![Screenshot of individual product page (mobile view)](./docs/individual-product-mobile.png)
 
 <br/>
 
 ### **Sign in page**
 
-![Screenshot of sign in page (desktop view)](./docs/Sign-in-desktop.png)
-![Screenshot of sign in page (tablet view)](./docs/Sign-in-tablet.png)
-![Screenshot of sign in page (mobile view)](./docs/Sign-in-mobile.png)
+![Screenshot of sign in page (desktop view)](./docs/sign-in-desktop.png)
+![Screenshot of sign in page (tablet view)](./docs/sign-in-tablet.png)
+![Screenshot of sign in page (mobile view)](./docs/sign-in-mobile.png)
 
 <br/>
 
 ### **Registration page**
 
-![Screenshot of registration page (desktop view)](./docs/Register-desktop.png)
-![Screenshot of registration page (tablet view)](./docs/Register-tablet.png)
-![Screenshot of registration page (mobile view)](./docs/Register-mobile.png)
+![Screenshot of registration page (desktop view)](./docs/register-desktop.png)
+![Screenshot of registration page (tablet view)](./docs/register-tablet.png)
+![Screenshot of registration page (mobile view)](./docs/register-mobile.png)
 
 <br/>
 
 ### **My balance page**
 
-![Screenshot of my balance page (desktop view)](./docs/My-balance-desktop.png)
-![Screenshot of my balance page (tablet view)](./docs/My-balance-tablet.png)
-![Screenshot of my balance page (mobile view)](./docs/My-balance-mobile.png)
+![Screenshot of my balance page (desktop view)](./docs/my-balance-desktop.png)
+![Screenshot of my balance page (tablet view)](./docs/my-balance-tablet.png)
+![Screenshot of my balance page (mobile view)](./docs/my-balance-mobile.png)
 
 <br/>
 
 ### **Post an Ad page**
 
-![Screenshot of post an ad page (desktop view)](./docs/Post-an-Ad-desktop.png)
-![Screenshot of post an ad page (tablet view)](./docs/Post-an-Ad-tablet.png)
-![Screenshot of post an ad page (mobile view)](./docs/Post-an-Ad-mobile.png)
+![Screenshot of post an ad page (desktop view)](./docs/post-an-ad-desktop.png)
+![Screenshot of post an ad page (tablet view)](./docs/post-an-ad-tablet.png)
+![Screenshot of post an ad page (mobile view)](./docs/post-an-ad-mobile.png)
 
 <br/>
 
@@ -157,6 +159,18 @@ The Product model has a one to many relationship with the Comment model as a pro
 The Transaction model has many to one relationships with the User and the Product models. Each time a buyer purchases a product from a seller, a transaction record is created that holds information about the purchase details, who the buyer was, who the seller was, and what the product was.
 
 ![Screenshot of post an ad page (desktop view)](./docs/erd.png)
+
+<br/>
+
+## High-level components
+
+Rails uses the Model View Controller (MVC) architecture. This architecture allows rails to have clean separation of concerns.
+
+For example, when a request is made by the user to access the root page, it is first sent to the router. The router then processes the request and determines which controller action to forward the request to. Since the user wants to access the root page, it will forward the request to the 'home' action of the 'static_pages' controller.
+
+The 'home' action makes a request to the database to extract the categories model instances and products model instances via the model. The action then forwards these model instances to the view.
+
+The view uses the model instances to dynamically develop a HTML response. The categories model instances are used to form the different categories buttons available in the navbar. THe products model instances are used to display the available products on the root page. The view then forwards the HTML response back to the user to allow the user to view and interact with the root page.
 
 <br/>
 
