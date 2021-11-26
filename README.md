@@ -1,4 +1,4 @@
-# JihyungKim_T1A2
+# JihyungKim_T2A2
 
 ## Quick Summary
 
@@ -9,7 +9,7 @@
 
 ## Purpose
 
-The purpose of this app is to allow users to buy or sell second-hand products online. This app helps to reduce waste by allowing sellers to sell items that are no longer needed by them and buyers to acquire these products instead of buying new items unnecessarily.
+The purpose of this app is to allow users to buy or sell second-hand products online. This app helps to reduce waste by allowing sellers to sell their items that are no longer needed by them to buyers and buyers to acquire these items second hand instead of buying them new unnecessarily.
 
 <br/>
 
