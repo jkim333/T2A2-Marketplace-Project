@@ -83,10 +83,10 @@ https://trello.com/b/DyRHwLAI/t2a2
 
 Tasks are allocated into the "To Do", "Doing" and "Done" columns. Tasks that need to start are first allocated into the "To Do" column. When I start working on the task, I would move the task to the "Doing" column. After completing the task and committing the changes in git, I would then move that task to the "Done" column to signal that the task is completed.
 
-![Trello_2021_11_8](./docs/Trello_2021_11_8.png)
-![Trello_2021_11_10](./docs/Trello_2021_11_10.png)
-![Trello_2021_11_17](./docs/Trello_2021_11_17.png)
-![Trello_2021_11_18](./docs/Trello_2021_11_18.png)
+![Trello_2021_11_8](./docs/Trello_2021_11_8.PNG)
+![Trello_2021_11_10](./docs/Trello_2021_11_10.PNG)
+![Trello_2021_11_17](./docs/Trello_2021_11_17.PNG)
+![Trello_2021_11_18](./docs/Trello_2021_11_18.PNG)
 
 <br/>
 
